@@ -146,7 +146,8 @@ neis.createSearchInstance(검색할 문자, 교육청 코드 = ALL);
 | parameter[1] | 교육청 코드(모든 교육청 검색: ALL)     |
 |    Return    |    [SchoolSearch](#schoolsearch)    |
 
-> 검색은 [SchoolSearch.getList](#schoolsearch) 를 호출하세요.
+> 검색은 [SchoolSearch.getList](#schoolsearch) 를 호출하세요.<br>
+> 예제 코드 : [/tests/test_search.js](https://github.com/nnnlog/neis/blob/master/tests/test_search.js)
 
 
 ---
@@ -157,10 +158,11 @@ neis.getSchoolInformation(검색할 문자);
 
 |     neis     |        .createSearchInstance        |
 |:------------:|:-----------------------------------:|
-| parameter[0] |             검색할 문자              |
+| parameter[0] |           [School](#school)         |
 |    Return    |    [SchoolInfo](#SchoolInfo)        |
 
-> 검색은 [SchoolInfo.getResult](#schoolinfo) 를 호출하세요.
+> 조회는 [SchoolInfo.getResult](#schoolinfo) 를 호출하세요.<br>
+> 예제 코드 : [/tests/test_info.js](https://github.com/nnnlog/neis/blob/master/tests/test_info.js)
 
 
 ---
@@ -174,4 +176,10 @@ neis.getMeal(검색할 문자);
 | parameter[0] |             [School](#school)      |
 |    Return    |    [SchoolInfo](#schoolinfo)       |
 
-> 검색은 [SchoolMeal.getMeal](#schoolmeal) 를 호출하세요.
+> 조회는 [SchoolMeal.getMeal](#schoolmeal) 를 호출하세요.<br>
+> 예제 코드 : [/tests/test_meal.js](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)
+
+
+## TODO
+* [ ] 학사 일정
+* [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  
