@@ -1,12 +1,16 @@
 # NEIS API
+
+[![npm version](https://badgen.net/npm/v/neis)](https://www.npmjs.com/package/neis)
+
 * 학교 정보, 학교 검색, 급식 조회 API를 제공합니다.
 
+
 ---
-### 클래스
+## 클래스
 
-#### 타입
+### 타입
 
-##### EduLists
+#### EduLists
 
 | 교육청 코드 |   value   |     지역명     |
 |:-----------:|:---------:|:--------------:|
@@ -28,7 +32,7 @@
 |  GYEONGNAM  | gne.go.kr | 경상남도(경남) |
 |     JEJU    | jje.go.kr |      제주      |
 
-##### SchoolType
+#### SchoolType
 
 |   학교 유형  | value |
 |:------------:|:-----:|
@@ -38,9 +42,9 @@
 |     HIGH     |   4   |
 
 
-#### 학교
+### 학교
 
-##### School
+#### School
 |      |          School 생성자         |
 |------|:------------------------------:|
 | edu  |      교육청 코드 ([EduLists](#edulists))      |
@@ -48,7 +52,7 @@
 | kind |     학교 유형 ([SchoolType](#schooltype))     |
 > [학교 세부정보 조회](#schoolinfo), [급식 조회](#schoolmeal)에 필요한 최소한의 학교 정보
 
-##### SchoolSearched
+#### SchoolSearched
 |      |      SchoolSearched 생성자     |
 |:----:|:------------------------------:|
 |  edu |      지역 이름 (EduLists)      |
@@ -58,7 +62,7 @@
 | addr |            학교 주소           |
 > [학교 검색](#schoolsearch)에서 반환되는 학교의 정보
 
-##### SchoolDetail
+#### SchoolDetail
 |           |      SchoolDetail 생성자     |
 |:---------:|:------------------------------:|
 |    edu    |      지역 이름 (EduLists)      |
@@ -72,9 +76,9 @@
 |  homepage |       학교 홈페이지 주소       |
 > [학교 세부정보 조회](#schoolinfo)에서 반환되는 학교의 정보
 
-#### 검색
+### 검색
 
-##### SchoolSearch
+#### SchoolSearch
 ```js
 SchoolSearch.getList(refresh = false);
 ```
@@ -84,16 +88,16 @@ SchoolSearch.getList(refresh = false);
 
 > Promise<SchoolSearched[]> 가 반환됩니다.
 
-#### 급식
+### 급식
 
-##### SchoolMeal
+#### SchoolMeal
 ```js
 SchoolMeal.getMeal(연도, 월);
 ```
 
 > Promise<Meal[]> 이 반환됩니다.
 
-##### Meal
+#### Meal
 |    Type   | return |
 |:---------:|:------:|
 |    date   |  Date  |
@@ -102,21 +106,21 @@ SchoolMeal.getMeal(연도, 월);
 |   dinner  |  석식  |
 > [학교 급식](#schoolmeal) [검색](#schoolinfo)에서 반환되는 학교의 정보
 
-#### 학교 세부정보 조회
+### 학교 세부정보 조회
 
-##### SchoolInfo
+#### SchoolInfo
 ```js
 SchoolInfo.getResult();
 ```
 
 > Promise<[SchoolDetail](#schooldetail)> 가 반환됩니다.
 
-#### API
+### API
 ```js
 const neis = require("neis");
 ```
 
-##### createSchool
+#### createSchool
 * 학교 객체 생성
 ```js
 neis.createSchool(params...);
