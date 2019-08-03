@@ -1,0 +1,38 @@
+{
+  "name": "neis",
+  "version": "1.0.1",
+  "description": "나이스 학교 API",
+  "keywords": [
+    "neis",
+    "school",
+    "schoolmeal",
+    "schoolsearch",
+    "schoolinfo",
+    "diary",
+    "schooldiary"
+  ],
+  "homepage": "https://github.com/nnnlog/neis",
+  "bugs": {
+    "url": "https://github.com/nnnlog/neis/issues",
+    "email": "sorisem4106@naver.com"
+  },
+  "license": "MIT",
+  "author": "엔로그 <sorisem4106@naver.com> (박찬솔)",
+  "main": "src/neis.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nnnlog/neis.git"
+  },
+  "scripts": {
+    "test": "node tests/test.js"
+  },
+  "dependencies": {
+    "request": "^2.88.0",
+    "promise": "^8.0.3"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "devDependencies": {}
+}
