@@ -39,6 +39,31 @@ class neis {
         return JSON.parse(JSON.stringify(scType));
     }
 
+    /**
+     * School.toJSON() 의 데이터를 다시 학교 객체로 만듭니다.
+     *
+     * @param data
+     * @returns {School|SchoolSearched|SchoolDetail}
+     */
+    static createSchoolFromJSON(data) {
+        return neis.createSchool(
+            data.edu,
+            data.code,
+            data.kind,
+
+            data.name,
+            data.addr,
+
+            data.fondYmd,
+            data.zipCode,
+            data.tellNum,
+            data.faxNum,
+            data.homepage,
+            data.coeduScNm,
+            data.fondScNm
+        );
+    }
+
 
     /**
      * 학교를 반환합니다.
@@ -48,6 +73,7 @@ class neis {
      * @param {int}     kind                학교 종류 (/lib/types/SchoolType.js 참고)
      * @param {string}  name                학교 이름
      * @param {string}  addr                학교 주소
+     * @param {string}  fondYmd             학교 설립일
      * @param {string}  zipCode             학교 우편 번호
      * @param {string}  tellNum             학교 전화 번호
      * @param {string}  faxNum              학교 팩스 번호
@@ -57,9 +83,9 @@ class neis {
      *
      * @returns {School|SchoolSearched|SchoolDetail}
      */
-    static createSchool(edu_code, code, kind, name = '', addr = '', zipCode = '', tellNum = '', faxNum = '', homepage = '', coeduScNm = '', fondScNm = '') {
-        if (name !== '' && addr !== '') {
-            if (zipCode !== '' && tellNum !== '' && faxNum !== '' && homepage !== '' && coeduScNm !== '' && fondScNm !== '') {
+    static createSchool(edu_code, code, kind, name = undefined, addr = undefined, fondYmd = undefined, zipCode = undefined, tellNum = undefined, faxNum = undefined, homepage = undefined, coeduScNm = undefined, fondScNm = undefined) {
+        if (name !== undefined && addr !== undefined) {
+            if (fondYmd !== undefined && zipCode !== undefined && tellNum !== undefined && faxNum !== undefined && homepage !== undefined && coeduScNm !== undefined && fondScNm !== undefined) {
                 return new SchoolDetail(edu_code, code, kind, name, addr, zipCode, tellNum, faxNum, homepage);
             }
             return new SchoolSearched(edu_code, code, kind, name, addr);

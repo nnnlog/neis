@@ -1,7 +1,7 @@
 {
   "name": "neis",
-  "version": "0.0.2",
-  "description": "나이스 학교 API",
+  "version": "0.0.3",
+  "description": "나이스 학교 정보, 검색, 급식 조회 API",
   "keywords": [
     "neis",
     "school",
@@ -24,7 +24,7 @@
     "url": "git+https://github.com/nnnlog/neis.git"
   },
   "scripts": {
-    "test": "node tests/test.js"
+    "test": "node tests/test_memal.js"
   },
   "dependencies": {
     "request": "^2.88.0",

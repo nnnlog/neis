@@ -65,6 +65,7 @@
 #### SchoolDetail
 |           |      SchoolDetail 생성자     |
 |:---------:|:------------------------------:|
+|  fondYmd  |           학교 설립일           |
 |    edu    |      지역 이름 (EduLists)      |
 |    code   | 학교 코드 (예시: "C100000394") |
 |    kind   |     학교 유형 (SchoolType)     |
@@ -74,6 +75,8 @@
 |  tellNum  |          학교 전화번호         |
 |   faxNum  |          학교 팩스번호         |
 |  homepage |       학교 홈페이지 주소       |
+| coeduScNm |      성별(남/여/남여공학)      |
+|  fondScNm |     설립 유형 (사립, 공립)     |
 > [학교 세부정보 조회](#schoolinfo)에서 반환되는 학교의 정보
 
 ### 검색
@@ -132,6 +135,18 @@ neis.createSchool(params...);
 |   Return  | School, SchoolSearched, SchoolDetail |
 
 > params 는 [School](#school), [SchoolSearched](#schoolsearched), [SchoolDetail](#schooldetail) 의 생성자와 동일합니다.<br>
+> 전달된 값에 맞는 객체가 자동으로 반환됩니다.
+
+```js
+neis.createSchoolFromJSON(data);
+```
+
+|           |             createSchool             |
+|:---------:|:------------------------------------:|
+| parameter... |            아랫 문단 참고             |
+|   Return  | School, SchoolSearched, SchoolDetail |
+
+> params 는 [School].toJSON() 에서 반환된 데이터가 들어갑니다.<br>
 > 전달된 값에 맞는 객체가 자동으로 반환됩니다.
 
 ---
