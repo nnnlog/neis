@@ -45,19 +45,21 @@ class neis {
      *
      * @param {string}  edu_code            교육청 코드 (/lib/types/EduLists.js 참고)
      * @param {string}  code                학교 코드
-     * @param {int} kind                    학교 종류 (/lib/types/SchoolType.js 참고)
+     * @param {int}     kind                학교 종류 (/lib/types/SchoolType.js 참고)
      * @param {string}  name                학교 이름
      * @param {string}  addr                학교 주소
      * @param {string}  zipCode             학교 우편 번호
      * @param {string}  tellNum             학교 전화 번호
      * @param {string}  faxNum              학교 팩스 번호
      * @param {string}  homepage            학교 홈페이지 주소
+     * @param {string}  coeduScNm           학교 남녀 유형 (남/여/남여공학)
+     * @param {string}  fondScNm            학교 설립 유형 (공립/사립)
      *
      * @returns {School|SchoolSearched|SchoolDetail}
      */
-    static createSchool(edu_code, code, kind, name = '', addr = '', zipCode = '', tellNum = '', faxNum = '', homepage = '') {
+    static createSchool(edu_code, code, kind, name = '', addr = '', zipCode = '', tellNum = '', faxNum = '', homepage = '', coeduScNm = '', fondScNm = '') {
         if (name !== '' && addr !== '') {
-            if (zipCode !== '' && tellNum !== '' && faxNum !== '' && homepage !== '') {
+            if (zipCode !== '' && tellNum !== '' && faxNum !== '' && homepage !== '' && coeduScNm !== '' && fondScNm !== '') {
                 return new SchoolDetail(edu_code, code, kind, name, addr, zipCode, tellNum, faxNum, homepage);
             }
             return new SchoolSearched(edu_code, code, kind, name, addr);

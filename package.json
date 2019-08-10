@@ -1,6 +1,6 @@
 {
   "name": "neis",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "나이스 학교 API",
   "keywords": [
     "neis",
@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "author": "엔로그 <sorisem4106@naver.com> (박찬솔)",
-  "main": "src/neis.js",
+  "main": "neis.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nnnlog/neis.git"
