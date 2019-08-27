@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 const neis = require("../neis");
 const SchoolType = require("../lib/types/SchoolType");
 
-const search = neis.createSearchInstance('동래', 'BUSAN');
+const search = neis.createSearchInstance('동래');
 search.getList(true).then(d => {
     d.forEach(school => {
         console.log("학교 명: " +
