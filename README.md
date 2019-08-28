@@ -2,7 +2,7 @@
 
 [![npm version](https://badgen.net/npm/v/neis)](https://www.npmjs.com/package/neis)
 
-* 학교 정보, 학교 검색, 급식 조회 API를 제공합니다.
+* 학교 정보, 학교 검색, 급식 조회, 학사 일정 조회 API를 제공합니다.
 
 
 ---
@@ -118,6 +118,17 @@ SchoolInfo.getResult();
 
 > Promise<[SchoolDetail](#schooldetail)> 가 반환됩니다.
 
+### 학사 일정 조회
+
+#### SchoolDiarySearch
+```js
+SchoolDiarySearch.getResult(sem = 1);
+```
+
+> sem은 학기로 1 또는 2를 필요로 합니다. (기본값: 1[학기])<br>
+> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_info.js#L30-L149) 가 반환됩니다.
+
+
 ### API
 ```js
 const neis = require("neis");
@@ -168,7 +179,7 @@ neis.createSearchInstance(검색할 문자, 교육청 코드 = ALL);
 ---
 * 학교 세부정보 조회 객체 생성
 ```js
-neis.getSchoolInformation(검색할 문자);
+neis.getSchoolInformation(검색할 학교);
 ```
 
 |     neis     |        .createSearchInstance        |
@@ -183,7 +194,7 @@ neis.getSchoolInformation(검색할 문자);
 ---
 * 학교 급식 조회 객체 생성
 ```js
-neis.getMeal(검색할 문자);
+neis.getMeal(검색할 학교);
 ```
 
 |     neis     |        .createSearchInstance       |
@@ -195,6 +206,20 @@ neis.getMeal(검색할 문자);
 > 예제 코드 : [/tests/test_meal.js](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)
 
 
+---
+* 학사 일정 조회 객체 생성
+```js
+neis.getSchoolDiary(검색할 학교);
+```
+
+|     neis     |        .createSearchInstance        |
+|:------------:|:-----------------------------------:|
+| parameter[0] |           [School](#school)         |
+|    Return    |    [SchoolDiarySearch](#schooldiarysearch)        |
+
+> 조회는 [SchoolDiarySearch.getResult](#schooldiarysearch) 를 호출하세요.<br>
+> 예제 코드 : [/tests/test_diary.js](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js)
+
+
 ## TODO
-* [ ] 학사 일정
 * [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  

@@ -15,6 +15,8 @@ const SchoolDetail = require("./lib/class/school/SchoolDetail");
 const SchoolSearch = require("./lib/class/SchoolSearch");
 const SchoolInfo = require("./lib/class/SchoolInfo");
 
+const SchoolDiary = require("./lib/class/SchoolDiarySearch");
+
 const SchoolMeal = require("./lib/class/SchoolMeal");
 
 const list = require("./lib/types/EduLists");
@@ -118,6 +120,18 @@ class neis {
      */
     static getSchoolInformation(school) {
         return new SchoolInfo(school);
+    }
+
+
+    /**
+     * 학교의 학사 일정 조회 객체를 반환합니다.
+     *
+     * @param {School} school               정보를 가져올 학교의 최소한의 정보 (학교 코드, 교육청, 학교 유형{KINDERGARTEN, ELEMENTARY, MIDDLE, HIGH})
+     *
+     * @returns {SchoolDiarySearch}
+     */
+    static getSchoolDiary(school) {
+        return new SchoolDiary(school);
     }
 
     /**

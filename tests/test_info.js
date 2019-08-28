@@ -8,10 +8,10 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const neis = require("neis");
+const neis = require("../neis");
 const SchoolType = require("../lib/types/SchoolType");
 
-neis.getSchoolInformation(neis.createSchool('BUSAN', 'C100000773', neis.getAllSchoolType().MIDDLE)).getResult().then(school => {
+neis.getSchoolInformation(neis.createSchool('BUSAN', 'C100000394', neis.getAllSchoolType().HIGH)).getResult().then(school => {
     console.log("학교 명: " +
         school.name + "\n학교 코드 : " + school.code + "\n학교 설립 : " + school.fondYmd +
         "\n학교 위치 : " + school.addr + "\n학교 교육청 코드 : " + school.edu +
