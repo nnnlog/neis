@@ -126,7 +126,7 @@ SchoolDiarySearch.getResult(sem = 1);
 ```
 
 > sem은 학기로 1 또는 2를 필요로 합니다. (기본값: 1[학기])<br>
-> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_info.js#L30-L149) 가 반환됩니다.
+> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js#L30-L149) 가 반환됩니다.
 
 
 ### API
