@@ -109,6 +109,14 @@ SchoolMeal.getMeal(연도, 월);
 |   dinner  |  석식  |
 > [학교 급식](#schoolmeal) [검색](#schoolinfo)에서 반환되는 학교의 정보
 
+* 알러지 표시 제거
+```js
+Meal.removeAllergy("추억의 도시락(고)1.2.5.6.9.10.");
+```
+```
+Output: 추억의 도시락(고)
+```
+
 ### 학교 세부정보 조회
 
 #### SchoolInfo
