@@ -1,6 +1,6 @@
 # NEIS API
 
-[![npm version](https://badgen.net/npm/v/neis)](https://www.npmjs.com/package/neis)
+[![npm version](https://badgen.net/npm/v/neis)](https://www.npmjs.com/package/neis) [![npm](https://img.shields.io/npm/dt/neis.svg?style=flat-square)](https://www.npmjs.com/package/neis)
 
 * 학교 정보, 학교 검색, 급식 조회, 학사 일정 조회 API를 제공합니다.
 
