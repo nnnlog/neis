@@ -232,4 +232,8 @@ neis.getSchoolDiary(검색할 학교);
 
 
 ## TODO
-* [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  
+* [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공
+
+#### API 구조 변경
+ > * [ ] neis.getMeal, neis.getDiary, neis.getInformation 제거
+ > * [ ] School.prototype.getMeal, getDiary, getDetail 추가
