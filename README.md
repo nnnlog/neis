@@ -111,7 +111,7 @@ SchoolMeal.getMeal(연도, 월);
 
 * 알러지 표시 제거
 ```js
-Meal.removeAllergy("추억의 도시락(고)1.2.5.6.9.10.");
+neis.removeAllergy("추억의 도시락(고)1.2.5.6.9.10.");
 ```
 ```
 Output: 추억의 도시락(고)

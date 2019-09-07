@@ -18,6 +18,7 @@ const SchoolInfo = require("./lib/class/SchoolInfo");
 const SchoolDiary = require("./lib/class/SchoolDiarySearch");
 
 const SchoolMeal = require("./lib/class/SchoolMeal");
+const Meal = require("./lib/class/meal/Meal");
 
 const list = require("./lib/types/EduLists");
 const scType = require("./lib/types/SchoolType");
@@ -40,6 +41,14 @@ class neis {
     static getAllSchoolType() {
         return JSON.parse(JSON.stringify(scType));
     }
+	
+	/**
+	 * 급식 문자열에서 알러지 정보를 제거합니다.
+	 * @param {string} text
+	 */
+	static removeAllergy(text) {
+		return Meal.removeAllergy(text);
+	}
 
     /**
      * School.toJSON() 의 데이터를 다시 학교 객체로 만듭니다.
