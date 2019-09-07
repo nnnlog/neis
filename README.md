@@ -4,7 +4,7 @@
 
 * 학교 정보, 학교 검색, 급식 조회, 학사 일정 조회 API를 제공합니다.
 
- [![contact](https://badgen.net/badge/telegram/nnnlog/cyan?icon=telegram)](https://www.npmjs.com/package/neis) 
+ [![contact](https://badgen.net/badge/telegram/nnnlog/cyan?icon=telegram)](https://t.me/nnnlog) 
 
 
 ---
