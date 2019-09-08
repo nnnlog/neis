@@ -6,17 +6,35 @@
 
 [![contact](https://badgen.net/badge/telegram/nnnlog/cyan?icon=telegram)](https://www.npmjs.com/package/neis) 
 
-### Install
+### Installation
 ```
 npm install neis
 ```
+
+#### Why you use `neis` module?
+| Comparsion | neis    | node-school-kr |
+|------------|---------|----------------|
+| 급식       | 468ms   | 517.2ms        |
+| 학사일정   | 407.8ms | 469.6ms        |
+
+> [Bench code](https://github.com/nnnlog/neis/blob/master/tests/bench/)
+
+* 캐시 데이터 적용
+* 세부정보 조회, 학교 검색 API 지원
+* Promise 를 통한 비동기 지원
+
+#### Sample
+> [급식 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)<br>
+> [학사일정 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js)<br>
+> [세부정보 조회 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_detail.js)<br>
+> [검색 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_search.js)<br>
 
 ---
 ## 클래스
 
 ### 타입
 
-#### EduLists
+#### [RegionLists](#regionlists)
 | 교육청 코드 |   value   |     지역명     |
 |:-----------:|:---------:|:--------------:|
 |    SEOUL    | sen.go.kr |      서울      |
@@ -59,7 +77,7 @@ npm install neis
 |  GYEONGNAM  | 경상남도(경남) |
 |     JEJU     |     제주      |
 
-#### SchoolType
+#### [SchoolType](#schooltype)
 
 |   학교 유형  | value |
 |:------------:|:-----:|
@@ -74,17 +92,17 @@ npm install neis
 #### School
 |      |          School 생성자         |
 |------|:------------------------------:|
-| edu  |      교육청 코드 ([EduLists](#edulists))      |
+| edu  |      교육청 코드 ([RegionLists](#regionlists))      |
 | code | 학교 코드 (예시: "C100000394") |
-| kind |     학교 유형 ([SchoolType](#schooltype))     |
+| kind |     학교 유형 ([[SchoolType](#schooltype)](#[SchoolType](#schooltype)))     |
 > [학교 세부정보 조회](#학교-세부정보-조회), [급식 조회](#급식)에 필요한 최소한의 학교 정보
 
 #### SchoolSearched
 |      |      SchoolSearched 생성자     |
 |:----:|:------------------------------:|
-|  edu |      지역 이름 (EduLists)      |
+|  edu |      지역 이름 ([RegionLists](#regionlists))      |
 | code | 학교 코드 (예시: "C100000394") |
-| kind |     학교 유형 (SchoolType)     |
+| kind |     학교 유형 ([[SchoolType](#schooltype)](#[SchoolType](#schooltype)))     |
 | name |            학교 이름           |
 | addr |            학교 주소           |
 > [학교 검색](#searchschool)에서 반환되는 학교의 정보
@@ -93,9 +111,9 @@ npm install neis
 |           |      SchoolDetail 생성자     |
 |:---------:|:------------------------------:|
 |  fondYmd  |           학교 설립일           |
-|    edu    |      지역 이름 (EduLists)      |
+|    edu    |      지역 이름 ([RegionLists](#regionlists))      |
 |    code   | 학교 코드 (예시: "C100000394") |
-|    kind   |     학교 유형 (SchoolType)     |
+|    kind   |     학교 유형 ([SchoolType](#schooltype))     |
 |    name   |            학교 이름           |
 |    addr   |            학교 주소           |
 |  zipCode  |          학교 우편번호         |
@@ -111,7 +129,7 @@ npm install neis
 ## API
 
 ### 검색
- * [바로가기](#searchschool)
+ * [neis.searchSchool](#searchschool)
 
 ### 급식
 

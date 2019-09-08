@@ -8,6 +8,7 @@
     "schoolmeal",
     "schoolsearch",
     "schoolinfo",
+    "schooldetail",
     "diary",
     "schooldiary"
   ],
@@ -33,6 +34,5 @@
   "directories": {
     "lib": "lib",
     "test": "tests"
-  },
-  "devDependencies": {}
+  }
 }
