@@ -34,7 +34,7 @@ npm install neis
 
 ### 타입
 
-#### [RegionLists](#regionlists)
+#### EduLists
 | 교육청 코드 |   value   |     지역명     |
 |:-----------:|:---------:|:--------------:|
 |    SEOUL    | sen.go.kr |      서울      |
@@ -77,7 +77,7 @@ npm install neis
 |  GYEONGNAM  | 경상남도(경남) |
 |     JEJU     |     제주      |
 
-#### [SchoolType](#schooltype)
+#### SchoolType
 
 |   학교 유형  | value |
 |:------------:|:-----:|
