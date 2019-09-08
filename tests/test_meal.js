@@ -12,29 +12,29 @@ process.env.timeZone = "Asia/Seoul";
 
 const neis = require("../neis");
 
-const school = neis.createSchool('BUSAN', "C100000394", neis.getAllSchoolType().HIGH);
-neis.getMeal(school).getMeal(2019, 8).then(d => {
-    d.forEach(meal => {
-        console.log(meal.date.toDateString() + "\n" +
-            "조식 : " + meal.breakfast + "\n" +
-            "중식 : " + meal.lunch + "\n" +
-            "석식 : " + meal.dinner + "\n"
-        );
-    });
-    console.log("1일 급식 : " + "\n" +
-        "조식 : " + d[1].breakfast + "\n" +
-        "중식 : " + d[1].lunch + "\n" +
-        "석식 : " + d[1].dinner + "\n");
-
-    //8월 1일 급식:
-    /*
-    조식 : 없었음
-    중식 : 통밀밥(고)6.
-    쇠고기미역국(고)5.6.16.
-    새우까스(고)1.2.5.6.9.
-    어묵조림(방울,동래고)1.5.6.13.
-    배추김치(동래고)9.13.
-    근대나물(동래고)5.6.
-    석식 : 없었음
-     */
+const school = neis.createSchool(neis.getAllRegionList().BUSAN, "C100000394", neis.getAllSchoolType().HIGH);
+school.getMeal(2019, 8).then(d => {
+	d.forEach(meal => {
+		console.log(meal.date.toDateString() + "\n" +
+			"조식 : " + meal.breakfast + "\n" +
+			"중식 : " + meal.lunch + "\n" +
+			"석식 : " + meal.dinner + "\n"
+		);
+	});
+	console.log("1일 급식 : " + "\n" +
+		"조식 : " + d[1].breakfast + "\n" +
+		"중식 : " + d[1].lunch + "\n" +
+		"석식 : " + d[1].dinner + "\n");
+	
+	//8월 1일 급식:
+	/*
+	조식 : 없었음
+	중식 : 통밀밥(고)6.
+	쇠고기미역국(고)5.6.16.
+	새우까스(고)1.2.5.6.9.
+	어묵조림(방울,동래고)1.5.6.13.
+	배추김치(동래고)9.13.
+	근대나물(동래고)5.6.
+	석식 : 없었음
+	 */
 });

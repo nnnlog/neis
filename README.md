@@ -4,8 +4,12 @@
 
 * 학교 정보, 학교 검색, 급식 조회, 학사 일정 조회 API를 제공합니다.
 
- [![contact](https://badgen.net/badge/telegram/nnnlog/cyan?icon=telegram)](https://www.npmjs.com/package/neis) 
+[![contact](https://badgen.net/badge/telegram/nnnlog/cyan?icon=telegram)](https://www.npmjs.com/package/neis) 
 
+### Install
+```
+npm install neis
+```
 
 ---
 ## 클래스
@@ -13,7 +17,6 @@
 ### 타입
 
 #### EduLists
-
 | 교육청 코드 |   value   |     지역명     |
 |:-----------:|:---------:|:--------------:|
 |    SEOUL    | sen.go.kr |      서울      |
@@ -33,6 +36,28 @@
 |  GYEONGBUK  |   gbe.kr  | 경상북도(경북) |
 |  GYEONGNAM  | gne.go.kr | 경상남도(경남) |
 |     JEJU    | jje.go.kr |      제주      |
+
+#### RegionLists
+
+| 교육청 코드 |     지역명     |
+|:-----------:|:--------------:|
+|    SEOUL     |    서울      |
+|    BUSAN     |     부산      |
+|    DAEGU     |     대구      |
+|   INCHOEN    |     인천      |
+|   GWANGJU    |     광주      |
+|   DAEJEON    |     대전      |
+|    ULSAN     |     울산      |
+|    SEJONG    |     세종      |
+|   GYEONGGI   |     경기      |
+|   GANGWON    |     강원      |
+|   CHUNGBUK  | 충청북도(충북) |
+|   CHUNKNAM  | 충청남도(충남) |
+|   JEONBUK   | 전라북도(전북) |
+|   JEONNAM   | 전라남도(전남) |
+|  GYEONGBUK  | 경상북도(경북) |
+|  GYEONGNAM  | 경상남도(경남) |
+|     JEJU     |     제주      |
 
 #### SchoolType
 
@@ -81,35 +106,28 @@
 |  fondScNm |     설립 유형 (사립, 공립)     |
 > [학교 세부정보 조회](#schoolinfo)에서 반환되는 학교의 정보
 
+
+---
+## API
+
 ### 검색
-
-#### SchoolSearch
-```js
-SchoolSearch.getList(refresh = false);
-```
-
-> getList() 로 학교 목록을 받아옵니다.<br>
-> 매개 변수로 true를 넣으면 다시 검색합니다.
-
-> Promise<SchoolSearched[]> 가 반환됩니다.
+ * [바로가기](#searchSchool)
 
 ### 급식
 
-#### SchoolMeal
 ```js
-SchoolMeal.getMeal(연도, 월);
+School.getMeal(year, month, refresh = false);
 ```
 
-> Promise<Meal[]> 이 반환됩니다.
+> Promise<[Meal](#meal)[]> 이 반환됩니다.
 
-#### Meal
+#### Meal.js
 |    Type   | return |
 |:---------:|:------:|
 |    date   |  Date  |
 | breakfast |  조식  |
 |   lunch   |  중식  |
 |   dinner  |  석식  |
-> [학교 급식](#schoolmeal) [검색](#schoolinfo)에서 반환되는 학교의 정보
 
 * 알러지 표시 제거
 ```js
@@ -121,25 +139,23 @@ Output: 추억의 도시락(고)
 
 ### 학교 세부정보 조회
 
-#### SchoolInfo
 ```js
-SchoolInfo.getResult();
+School.getSchoolDetail(refresh = false);
 ```
 
 > Promise<[SchoolDetail](#schooldetail)> 가 반환됩니다.
 
 ### 학사 일정 조회
 
-#### SchoolDiarySearch
 ```js
-SchoolDiarySearch.getResult(sem = 1);
+School.getDiary(month, refresh = false);
 ```
 
-> sem은 학기로 1 또는 2를 필요로 합니다. (기본값: 1[학기])<br>
-> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js#L30-L149) 가 반환됩니다.
+> 일정을 가져올 월을 입력해주세요.<br>
+> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js#L24-L35) 가 반환됩니다.
 
 
-### API
+### neis
 ```js
 const neis = require("neis");
 ```
@@ -147,17 +163,18 @@ const neis = require("neis");
 #### createSchool
 * 학교 객체 생성
 ```js
-neis.createSchool(params...);
+neis.createSchool(...params);
 ```
 
 |           |             createSchool             |
 |:---------:|:------------------------------------:|
-| parameter... |            아랫 문단 참고             |
+| ...parameter |            아랫 문단 참고             |
 |   Return  | School, SchoolSearched, SchoolDetail |
 
 > params 는 [School](#school), [SchoolSearched](#schoolsearched), [SchoolDetail](#schooldetail) 의 생성자와 동일합니다.<br>
 > 전달된 값에 맞는 객체가 자동으로 반환됩니다.
 
+#### createSchoolFromJSON
 ```js
 neis.createSchoolFromJSON(data);
 ```
@@ -167,69 +184,30 @@ neis.createSchoolFromJSON(data);
 | parameter... |            아랫 문단 참고             |
 |   Return  | School, SchoolSearched, SchoolDetail |
 
-> params 는 [School].toJSON() 에서 반환된 데이터가 들어갑니다.<br>
-> 전달된 값에 맞는 객체가 자동으로 반환됩니다.
+> params 는 [School](#school).toJSON() 에서 반환된 데이터가 들어갑니다.<br>
+> 전달된 JSON 값에 맞는 객체가 자동으로 반환됩니다.
 
----
-* 학교 검색 객체 생성
+
+#### searchSchool
 ```js
-neis.createSearchInstance(검색할 문자, 교육청 코드 = ALL);
+neis.searchSchool(searchString, edu = 'ALL', refresh = false);
 ```
 
 |     neis     |        .createSearchInstance        |
 |:------------:|:-----------------------------------:|
-| parameter[0] |             검색할 문자               |
-| parameter[1] | 교육청 코드(모든 교육청 검색: ALL)     |
-|    Return    |    [SchoolSearch](#schoolsearch)    |
+| searchString |             검색할 문자               |
+|     edu    | 지역 코드(모든 교육청 검색: ALL)     |
+|     refresh    | 재검색 여부     |
+|    Return    |    [SchoolSearched](#schoolsearched)    |
 
-> 검색은 [SchoolSearch.getList](#schoolsearch) 를 호출하세요.<br>
+
+> 학교 목록을 받아옵니다.<br>
+
+> Promise<SchoolSearched[]> 가 반환됩니다.<br>
 > 예제 코드 : [/tests/test_search.js](https://github.com/nnnlog/neis/blob/master/tests/test_search.js)
-
-
----
-* 학교 세부정보 조회 객체 생성
-```js
-neis.getSchoolInformation(검색할 학교);
-```
-
-|     neis     |        .createSearchInstance        |
-|:------------:|:-----------------------------------:|
-| parameter[0] |           [School](#school)         |
-|    Return    |    [SchoolInfo](#SchoolInfo)        |
-
-> 조회는 [SchoolInfo.getResult](#schoolinfo) 를 호출하세요.<br>
-> 예제 코드 : [/tests/test_info.js](https://github.com/nnnlog/neis/blob/master/tests/test_info.js)
-
-
----
-* 학교 급식 조회 객체 생성
-```js
-neis.getMeal(검색할 학교);
-```
-
-|     neis     |        .createSearchInstance       |
-|:------------:|:----------------------------------:|
-| parameter[0] |             [School](#school)      |
-|    Return    |    [SchoolInfo](#schoolinfo)       |
-
-> 조회는 [SchoolMeal.getMeal](#schoolmeal) 를 호출하세요.<br>
-> 예제 코드 : [/tests/test_meal.js](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)
-
-
----
-* 학사 일정 조회 객체 생성
-```js
-neis.getSchoolDiary(검색할 학교);
-```
-
-|     neis     |        .createSearchInstance        |
-|:------------:|:-----------------------------------:|
-| parameter[0] |           [School](#school)         |
-|    Return    |    [SchoolDiarySearch](#schooldiarysearch)        |
-
-> 조회는 [SchoolDiarySearch.getResult](#schooldiarysearch) 를 호출하세요.<br>
-> 예제 코드 : [/tests/test_diary.js](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js)
 
 
 ## TODO
 * [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  
+* [ ] request 모듈 변경
+* [ ] web javascript 지원

@@ -8,42 +8,16 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const School = require("./School");
+const neis = require("../neis");
+const SchoolType = require("../lib/types/SchoolType");
 
-class SchoolSearched extends School {
-	
-	#name;
-	#addr;
-	
-	constructor(edu, code, kind, name, addr) {
-		super(edu, code, kind);
-		this.#name = name;
-		this.#addr = addr;
-	}
-	
-	toJSON() {
-		return Object.assign(super.toJSON(), {
-			name: this.name,
-			addr: this.addr
-		});
-	}
-	
-	get name() {
-		return this.#name;
-	}
-	
-	set name(value) {
-		this.#name = value;
-	}
-	
-	get addr() {
-		return this.#addr;
-	}
-	
-	set addr(value) {
-		this.#addr = value;
-	}
-	
-}
-
-module.exports = SchoolSearched;
+neis.createSchool(neis.getAllRegionList().BUSAN, 'C100000394', neis.getAllSchoolType().HIGH).getSchoolDetail().then(school => {
+	console.log("학교 명: " +
+		school.name + "\n학교 코드 : " + school.code + "\n학교 설립 : " + school.fondYmd +
+		"\n학교 위치 : " + school.addr + "\n학교 교육청 코드 : " + school.edu +
+		"\n학교 유형 : " + SchoolType[school.kind] + "\n학교 우편 번호 : " + school.zipCode +
+		"\n학교 전화 번호 : " + school.tellNum + "\n학교 팩스 번호 : " + school.faxNum +
+		"\n학교 홈페이지 주소 : " + school.homepage + "\n학교 남녀 구분 : " + school.coeduScNm +
+		"\n학교 설립 유형 : " + school.fondScNm
+	)
+});

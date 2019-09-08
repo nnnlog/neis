@@ -9,16 +9,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 const neis = require("../neis");
-const SchoolType = require("../lib/types/SchoolType");
 
-const search = neis.createSearchInstance('동래');
-search.getList(true).then(d => {
-    d.forEach(school => {
-        console.log("학교 명: " +
-            school.name + "\n학교 코드 : " + school.code +
-            "\n학교 위치 : " + school.addr + "\n학교 교육청 코드 : " + school.edu +
-            "\n학교 유형 : " + SchoolType[school.kind] + "\n\n"
-        );
-    });
-
+neis.searchSchool('동래').then(d => {
+	d.forEach(school => {
+		console.log("학교 명: " +
+			school.name + "\n학교 코드 : " + school.code +
+			"\n학교 위치 : " + school.addr + "\n학교 교육청 코드 : " + school.edu +
+			"\n학교 유형 : " + neis.getAllSchoolType()[school.kind] + "\n\n"
+		);
+	});
+	
 });
