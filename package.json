@@ -1,6 +1,6 @@
 {
   "name": "neis",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "나이스 학교 세부정보, 검색, 급식 조회, 학사일정 조회 API",
   "keywords": [
     "neis",
@@ -34,5 +34,9 @@
   "directories": {
     "lib": "lib",
     "test": "tests"
-  }
+  },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "engineStrict": false
 }

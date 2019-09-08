@@ -11,6 +11,13 @@
 npm install neis
 ```
 
+##### Required
+```
+node >= 12.0
+```
+
+* Private Field를 사용하므로 12.0 이후의 Node.js 버전을 권장합니다.
+
 #### Why you use `neis` module?
 | Comparsion | neis    | node-school-kr |
 |------------|---------|----------------|
