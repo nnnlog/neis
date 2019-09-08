@@ -77,7 +77,7 @@ npm install neis
 | edu  |      교육청 코드 ([EduLists](#edulists))      |
 | code | 학교 코드 (예시: "C100000394") |
 | kind |     학교 유형 ([SchoolType](#schooltype))     |
-> [학교 세부정보 조회](#schoolinfo), [급식 조회](#schoolmeal)에 필요한 최소한의 학교 정보
+> [학교 세부정보 조회](#학교-세부정보-조회), [급식 조회](#급식)에 필요한 최소한의 학교 정보
 
 #### SchoolSearched
 |      |      SchoolSearched 생성자     |
@@ -87,7 +87,7 @@ npm install neis
 | kind |     학교 유형 (SchoolType)     |
 | name |            학교 이름           |
 | addr |            학교 주소           |
-> [학교 검색](#schoolsearch)에서 반환되는 학교의 정보
+> [학교 검색](#searchschool)에서 반환되는 학교의 정보
 
 #### SchoolDetail
 |           |      SchoolDetail 생성자     |
@@ -104,14 +104,14 @@ npm install neis
 |  homepage |       학교 홈페이지 주소       |
 | coeduScNm |      성별(남/여/남여공학)      |
 |  fondScNm |     설립 유형 (사립, 공립)     |
-> [학교 세부정보 조회](#schoolinfo)에서 반환되는 학교의 정보
+> [학교 세부정보 조회](#학교-세부정보-조회)에서 반환되는 학교의 정보
 
 
 ---
 ## API
 
 ### 검색
- * [바로가기](#searchSchool)
+ * [바로가기](#searchschool)
 
 ### 급식
 
@@ -119,9 +119,9 @@ npm install neis
 School.getMeal(year, month, refresh = false);
 ```
 
-> Promise<[Meal](#meal)[]> 이 반환됩니다.
+> Promise<[Meal](#meal.js)[]> 이 반환됩니다.
 
-#### Meal.js
+##### Meal.js
 |    Type   | return |
 |:---------:|:------:|
 |    date   |  Date  |
@@ -129,7 +129,7 @@ School.getMeal(year, month, refresh = false);
 |   lunch   |  중식  |
 |   dinner  |  석식  |
 
-* 알러지 표시 제거
+> 알러지 표시 제거
 ```js
 neis.removeAllergy("추억의 도시락(고)1.2.5.6.9.10.");
 ```
@@ -143,7 +143,9 @@ Output: 추억의 도시락(고)
 School.getSchoolDetail(refresh = false);
 ```
 
-> Promise<[SchoolDetail](#schooldetail)> 가 반환됩니다.
+> Promise<[SchoolDetail](#schooldetail)> 가 반환됩니다.<br>
+> 예제 코드 : [/tests/test_detail.js](https://github.com/nnnlog/neis/blob/master/tests/test_detail.js)
+
 
 ### 학사 일정 조회
 
