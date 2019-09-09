@@ -23,14 +23,15 @@ node >= 12.0
 |:------------:|:---------:|:----------------:|
 | 급식       | 468ms   | 517.2ms        |
 | 학사일정   | 407.8ms | 469.6ms        |
-| 학교검색   | - | 기능 없음       |
-| 학사일정   | - | 기능 없음     |
+| 학교검색   | 301.8ms | 기능 없음       |
+| 학사일정   | 426.8ms | 기능 없음     |
 
 > [Bench code](https://github.com/nnnlog/neis/blob/master/tests/bench/)
 
 * 캐시 데이터 적용
 * 세부정보 조회, 학교 검색 API 지원
 * Promise 를 통한 비동기 지원
+* 비동기 처리를 통한 성능 향상
 
 #### Sample
 > [급식 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)<br>

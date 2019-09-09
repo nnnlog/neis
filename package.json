@@ -28,8 +28,8 @@
     "test": "node tests/test_meal.js"
   },
   "dependencies": {
-    "request": "^2.88.0",
-    "promise": "^8.0.3"
+    "promise": "^8.0.3",
+    "request": "^2.88.0"
   },
   "directories": {
     "lib": "lib",

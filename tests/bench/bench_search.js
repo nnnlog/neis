@@ -23,5 +23,7 @@ search_test();
 
 /*
 RESULT:
+First calc...
+neis            module  | Average sec: 301.8ms
 
  */
