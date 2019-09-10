@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 const neis = require("../neis");
 const SchoolType = require("../lib/types/SchoolType");
 
-neis.createSchool(neis.getAllRegionList().BUSAN, 'C100000394', neis.getAllSchoolType().HIGH).getSchoolDetail().then(school => {
+neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getSchoolDetail().then(school => {
 	console.log("학교 명: " +
 		school.name + "\n학교 코드 : " + school.code + "\n학교 설립 : " + school.fondYmd +
 		"\n학교 위치 : " + school.addr + "\n학교 교육청 코드 : " + school.edu +

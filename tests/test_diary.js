@@ -10,7 +10,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 const neis = require("../neis"), month = 9;
 
-neis.createSchool(neis.getAllRegionList().BUSAN, 'C100000394', neis.getAllSchoolType().HIGH).getDiary(month).then(list => {
+neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getDiary(month).then(list => {
 	for (let day of Object.keys(list)) {
 		console.log(`${month}/${day}: ${list[day]}`);
 	}
@@ -19,7 +19,7 @@ neis.createSchool(neis.getAllRegionList().BUSAN, 'C100000394', neis.getAllSchool
 /*
 
 var dump of
-neis.getSchoolDiary(neis.createSchool('BUSAN', 'C100000394', neis.getAllSchoolType().HIGH)).getResult(2)
+neis.getSchoolDiary(neis.createSchool('BUSAN', 'C100000394', neis.TYPE.HIGH)).getResult(2)
 
 {
 	9/4: 모의수능(3년),학력평가(1,2)

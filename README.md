@@ -6,7 +6,8 @@
 
 [![contact](https://badgen.net/badge/telegram/nnnlog/cyan?icon=telegram)](https://www.npmjs.com/package/neis) 
 
-### Installation
+### How to use?
+#### 설치
 ```
 npm install neis
 ```
@@ -16,15 +17,26 @@ npm install neis
 node >= 12.0
 ```
 
+#### 예제 코드
+```js
+const neis = require("neis");
+neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8).then(d => {
+    //write your code...
+});
+```
+
 * Private Field를 사용하므로 12.0 이후의 Node.js 버전을 권장합니다.
 
-#### Why you use `neis` module?
+#### 성능 및 기능 비교
+
+##### More feature, more fast<br>
+
 | Comparsion | neis    | node-school-kr |
 |:------------:|:---------:|:----------------:|
 | 급식       | 468ms   | 517.2ms        |
 | 학사일정   | 407.8ms | 469.6ms        |
 | 학교검색   | 301.8ms | 기능 없음       |
-| 학사일정   | 426.8ms | 기능 없음     |
+| 세부정보   | 426.8ms | 기능 없음     |
 
 > [Bench code](https://github.com/nnnlog/neis/blob/master/tests/bench/)
 
@@ -32,6 +44,7 @@ node >= 12.0
 * 세부정보 조회, 학교 검색 API 지원
 * Promise 를 통한 비동기 지원
 * 비동기 처리를 통한 성능 향상
+* 학교 정보를 JSON 형태로 저장/불러오기
 
 #### Sample
 > [급식 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)<br>
@@ -40,64 +53,7 @@ node >= 12.0
 > [검색 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_search.js)<br>
 
 ---
-## 클래스
-
-### 타입
-
-#### EduLists
-| 교육청 코드 |   value   |     지역명     |
-|:-----------:|:---------:|:--------------:|
-|    SEOUL    | sen.go.kr |      서울      |
-|    BUSAN    | pen.go.kr |      부산      |
-|    DAEGU    | dge.go.kr |      대구      |
-|   INCHOEN   | ice.go.kr |      인천      |
-|   GWANGJU   | dje.go.kr |      광주      |
-|   DAEJEON   | dje.go.kr |      대전      |
-|    ULSAN    | use.go.kr |      울산      |
-|    SEJONG   | sje.go.kr |      세종      |
-|   GYEONGGI  | goe.go.kr |      경기      |
-|   GANGWON   | kwe.go.kr |      강원      |
-|   CHUNGBUK  | cbe.go.kr | 충청북도(충북) |
-|   CHUNKNAM  | cne.go.kr | 충청남도(충남) |
-|   JEONBUK   | jbe.go.kr | 전라북도(전북) |
-|   JEONNAM   | jne.go.kr | 전라남도(전남) |
-|  GYEONGBUK  |   gbe.kr  | 경상북도(경북) |
-|  GYEONGNAM  | gne.go.kr | 경상남도(경남) |
-|     JEJU    | jje.go.kr |      제주      |
-
-#### RegionLists
-
-| 교육청 코드 |     지역명     |
-|:-----------:|:--------------:|
-|    SEOUL     |    서울      |
-|    BUSAN     |     부산      |
-|    DAEGU     |     대구      |
-|   INCHOEN    |     인천      |
-|   GWANGJU    |     광주      |
-|   DAEJEON    |     대전      |
-|    ULSAN     |     울산      |
-|    SEJONG    |     세종      |
-|   GYEONGGI   |     경기      |
-|   GANGWON    |     강원      |
-|   CHUNGBUK  | 충청북도(충북) |
-|   CHUNKNAM  | 충청남도(충남) |
-|   JEONBUK   | 전라북도(전북) |
-|   JEONNAM   | 전라남도(전남) |
-|  GYEONGBUK  | 경상북도(경북) |
-|  GYEONGNAM  | 경상남도(경남) |
-|     JEJU     |     제주      |
-
-#### SchoolType
-
-|   학교 유형  | value |
-|:------------:|:-----:|
-| KINDERGARTEN |   1   |
-|  ELEMENTARY  |   2   |
-|    MIDDLE    |   3   |
-|     HIGH     |   4   |
-
-
-### 학교
+## School Class
 
 #### School
 |      |          School 생성자         |
@@ -190,6 +146,11 @@ School.getDiary(month, refresh = false);
 const neis = require("neis");
 ```
 
+#### 교육청, 지역, 유형
+* [neis.EDU](#edulists) : 교육청 URL
+* [neis.REGION](#regionlists) : 교육청 지역명 (코드)
+* [neis.TYPE](#schooltype) : 학교 유형 (유치원, 초등학교, 중학교, 고등학교)
+
 #### createSchool
 * 학교 객체 생성
 ```js
@@ -226,15 +187,83 @@ neis.searchSchool(searchString, edu = 'ALL', refresh = false);
 |     neis     |        .createSearchInstance        |
 |:------------:|:-----------------------------------:|
 | searchString |             검색할 문자               |
-|     edu    | 지역 코드(모든 교육청 검색: ALL)     |
-|     refresh    | 재검색 여부     |
-|    Return    |    [SchoolSearched](#schoolsearched)    |
+|     edu    | 지역 코드(모든 교육청 : ```ALL```)     |
+|     refresh    | 재검색 여부(기본값: ```false```)     |
+|    Return    |    Promise<[SchoolSearched](#schoolsearched) []>   |
 
 
 > 학교 목록을 받아옵니다.<br>
 
 > Promise<SchoolSearched[]> 가 반환됩니다.<br>
 > 예제 코드 : [/tests/test_search.js](https://github.com/nnnlog/neis/blob/master/tests/test_search.js)
+
+
+### 타입
+
+#### EduLists
+
+```js
+neis.EDU
+```
+
+| 교육청 코드 |   value   |     지역명     |
+|:-----------:|:---------:|:--------------:|
+|    SEOUL    | sen.go.kr |      서울      |
+|    BUSAN    | pen.go.kr |      부산      |
+|    DAEGU    | dge.go.kr |      대구      |
+|   INCHOEN   | ice.go.kr |      인천      |
+|   GWANGJU   | dje.go.kr |      광주      |
+|   DAEJEON   | dje.go.kr |      대전      |
+|    ULSAN    | use.go.kr |      울산      |
+|    SEJONG   | sje.go.kr |      세종      |
+|   GYEONGGI  | goe.go.kr |      경기      |
+|   GANGWON   | kwe.go.kr |      강원      |
+|   CHUNGBUK  | cbe.go.kr | 충청북도(충북) |
+|   CHUNKNAM  | cne.go.kr | 충청남도(충남) |
+|   JEONBUK   | jbe.go.kr | 전라북도(전북) |
+|   JEONNAM   | jne.go.kr | 전라남도(전남) |
+|  GYEONGBUK  |   gbe.kr  | 경상북도(경북) |
+|  GYEONGNAM  | gne.go.kr | 경상남도(경남) |
+|     JEJU    | jje.go.kr |      제주      |
+
+#### RegionLists
+
+```js
+neis.REGION
+```
+
+| 교육청 코드 |     지역명     |
+|:-----------:|:--------------:|
+|    SEOUL     |    서울      |
+|    BUSAN     |     부산      |
+|    DAEGU     |     대구      |
+|   INCHOEN    |     인천      |
+|   GWANGJU    |     광주      |
+|   DAEJEON    |     대전      |
+|    ULSAN     |     울산      |
+|    SEJONG    |     세종      |
+|   GYEONGGI   |     경기      |
+|   GANGWON    |     강원      |
+|   CHUNGBUK  | 충청북도(충북) |
+|   CHUNKNAM  | 충청남도(충남) |
+|   JEONBUK   | 전라북도(전북) |
+|   JEONNAM   | 전라남도(전남) |
+|  GYEONGBUK  | 경상북도(경북) |
+|  GYEONGNAM  | 경상남도(경남) |
+|     JEJU     |     제주      |
+
+#### SchoolType
+
+```js
+neis.TYPE
+```
+
+|   학교 유형  | value |
+|:------------:|:-----:|
+| KINDERGARTEN |   1   |
+|  ELEMENTARY  |   2   |
+|    MIDDLE    |   3   |
+|     HIGH     |   4   |
 
 
 ## TODO

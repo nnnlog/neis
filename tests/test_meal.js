@@ -12,7 +12,7 @@ process.env.timeZone = "Asia/Seoul";
 
 const neis = require("../neis");
 
-const school = neis.createSchool(neis.getAllRegionList().BUSAN, "C100000394", neis.getAllSchoolType().HIGH);
+const school = neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH);
 school.getMeal(2019, 8).then(d => {
 	d.forEach(meal => {
 		console.log(meal.date.toDateString() + "\n" +

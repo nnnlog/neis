@@ -26,7 +26,7 @@ class neis {
 	 * 모든 교육청 코드를 반환합니다. {교육청코드 => 교육청링크, ...}
 	 * @returns {{SEJONG, DAEJEON, BUSAN, JEJU, GYEONGNAM, SEOUL, DAEGU, GYEONGGI, GANGWON, ULSAN, JEONBUK, GYEONGBUK, INCHOEN, CHUNGBUK, GWANGJU, CHUNKNAM, JEONNAM}}
 	 */
-	static getAllEducationName() {
+	static get EDU() {
 		return JSON.parse(JSON.stringify(list));
 	}
 	
@@ -35,11 +35,11 @@ class neis {
 	 * 지역명과 교육청코드는 같습니다.
 	 *
 	 * 따라서, 아래와 같이 코드를 작성할 수 있습니다.
-	 * neis.createSchool(neis.getAllRegionList().SEOUL, '학교코드', neis.getAllSchoolType().HIGH);
+	 * neis.createSchool(neis.REGION.SEOUL, '학교코드', neis.TYPE.HIGH);
 	 *
 	 * @returns {{SEJONG, DAEJEON, BUSAN, JEJU, GYEONGNAM, SEOUL, DAEGU, GYEONGGI, GANGWON, ULSAN, JEONBUK, GYEONGBUK, INCHOEN, CHUNGBUK, GWANGJU, CHUNKNAM, JEONNAM}}
 	 */
-	static getAllRegionList() {
+	static get REGION() {
 		return JSON.parse(JSON.stringify(region));
 	}
 	
@@ -47,7 +47,7 @@ class neis {
 	 *
 	 * @returns {{HIGH, MIDDLE, ELEMENTARY, KINDERGARTEN}}
 	 */
-	static getAllSchoolType() {
+	static get TYPE() {
 		return JSON.parse(JSON.stringify(scType));
 	}
 	
