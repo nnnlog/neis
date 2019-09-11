@@ -17,15 +17,15 @@ npm install neis
 node >= 12.0
 ```
 
+> Private Field를 사용하므로 12.0 이후의 Node.js 버전을 권장합니다.
+
 #### 예제 코드
 ```js
 const neis = require("neis");
-neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8).then(d => {
+neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8).then(meal => {
     //write your code...
 });
 ```
-
-* Private Field를 사용하므로 12.0 이후의 Node.js 버전을 권장합니다.
 
 #### 성능 및 기능 비교
 
@@ -44,7 +44,7 @@ neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019,
 * 세부정보 조회, 학교 검색 API 지원
 * Promise 를 통한 비동기 지원
 * 비동기 처리를 통한 성능 향상
-* 학교 정보를 JSON 형태로 저장/불러오기
+* 학교 정보 JSON 형태로 저장 및 불러오기 지원
 
 #### Sample
 > [급식 예제 소스](https://github.com/nnnlog/neis/blob/master/tests/test_meal.js)<br>
