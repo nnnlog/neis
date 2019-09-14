@@ -47,11 +47,11 @@ diary_test();
 RESULT:
 
 First calc...
-node-school-kr  module  | Average sec: 493.7ms
-neis            module  | Average sec: 449.4ms
+node-school-kr  module  | Average sec: 431.7ms
+neis            module  | Average sec: 406.9ms
 
 
 Second calc...
-neis            module  | Average sec: 407.8ms
-node-school-kr  module  | Average sec: 469.6ms
+neis            module  | Average sec: 384.2ms
+node-school-kr  module  | Average sec: 444ms
  */

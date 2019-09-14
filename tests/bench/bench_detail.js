@@ -24,7 +24,8 @@ detail_test();
 
 /*
 RESULT:
+
 First calc...
-neis            module  | Average sec: 426.8ms
+neis            module  | Average sec: 486.9ms
 
  */

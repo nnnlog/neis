@@ -1,6 +1,6 @@
 {
   "name": "neis",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "description": "나이스 학교 세부정보, 검색, 급식 조회, 학사일정 조회 API",
   "keywords": [
     "neis",
@@ -28,8 +28,7 @@
     "test": "node tests/test_meal.js"
   },
   "dependencies": {
-    "promise": "^8.0.3",
-    "request": "^2.88.0"
+    "axios": "^0.19.0"
   },
   "directories": {
     "lib": "lib",
@@ -38,5 +37,5 @@
   "engines": {
     "node": ">=12.0"
   },
-  "engineStrict": false
+  "engineStrict": true
 }

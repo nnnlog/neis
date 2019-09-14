@@ -12,25 +12,25 @@ const neis = require("../neis"), month = 9;
 
 neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getDiary(month).then(list => {
 	for (let day of Object.keys(list)) {
-		console.log(`${month}/${day}: ${list[day]}`);
+		console.log(`${month}/${day}: ${list[day].join(", ")}`);
 	}
 });
 
 /*
 
-var dump of
-neis.getSchoolDiary(neis.createSchool('BUSAN', 'C100000394', neis.TYPE.HIGH)).getResult(2)
+RESULT:
 
 {
-	9/4: 모의수능(3년),학력평가(1,2)
-	9/7: 토요휴업일
-	9/12: 추석연휴
-	9/13: 추석
-	9/14: 토요휴업일
-	9/21: 토요휴업일
-	9/24: 영어듣기(1학년)
-	9/25: 영어듣기(2학년)
-	9/26: 영어듣기(3학년)
-	9/28: 토요휴업일
+9/4: 모의수능(3년), 학력평가(1,2)
+9/7: 토요휴업일
+9/12: 추석연휴
+9/13: 추석
+9/14: 토요휴업일
+9/21: 토요휴업일
+9/24: 영어듣기(1학년)
+9/25: 영어듣기(2학년)
+9/26: 영어듣기(3학년)
+9/28: 토요휴업일
+
 }
  */

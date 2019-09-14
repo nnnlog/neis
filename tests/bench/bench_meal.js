@@ -47,11 +47,11 @@ meal_test();
 RESULT:
 
 First calc...
-node-school-kr  module  | Average sec: 525.5ms
-neis            module  | Average sec: 476.6ms
+node-school-kr  module  | Average sec: 533.2ms
+neis            module  | Average sec: 403.6ms
 
 
 Second calc...
-neis            module  | Average sec: 468ms
-node-school-kr  module  | Average sec: 517.2ms
+neis            module  | Average sec: 437.8ms
+node-school-kr  module  | Average sec: 508.1ms
  */

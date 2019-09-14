@@ -17,7 +17,7 @@ npm install neis
 node >= 12.0
 ```
 
-> Private Field를 사용하므로 12.0 이후의 Node.js 버전을 권장합니다.
+> Private Field를 사용하므로 12.0 이후의 Node.js 버전을 요구합니다.
 
 #### 예제 코드
 ```js
@@ -25,6 +25,12 @@ const neis = require("neis");
 neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8).then(meal => {
     //write your code...
 });
+```
+or...
+```js
+const neis = require("neis");
+meal = await neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8);
+//write your code...
 ```
 
 #### 성능 및 기능 비교
@@ -268,5 +274,5 @@ neis.TYPE
 
 ## TODO
 * [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  
-* [ ] request 모듈 변경
 * [ ] web javascript 지원
+* [ ] [travis-ci 사용](https://github.com/nnnlog/neis/tree/travis)
