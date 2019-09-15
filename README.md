@@ -144,7 +144,7 @@ School.getDiary(month, refresh = false);
 ```
 
 > 일정을 가져올 월을 입력해주세요.<br>
-> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js#L24-L35) 가 반환됩니다.
+> [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js#L23-L32) 가 반환됩니다.
 
 
 ### neis
