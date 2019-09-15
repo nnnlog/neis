@@ -29,13 +29,13 @@ neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019,
 or...
 ```js
 const neis = require("neis");
-meal = await neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8);
+let meal = await neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH).getMeal(2019, 8);
 //write your code...
 ```
 
 #### 성능 및 기능 비교
 
-##### More feature, more fast<br>
+##### More feature, more fast
 
 | Comparsion | neis    | node-school-kr |
 |:------------:|:---------:|:----------------:|
@@ -119,7 +119,7 @@ School.getMeal(year, month, refresh = false);
 |   lunch   |  중식  |
 |   dinner  |  석식  |
 
-> 알러지 표시 제거
+* 알러지 표시 제거
 ```js
 neis.removeAllergy("추억의 도시락(고)1.2.5.6.9.10.");
 ```
@@ -275,4 +275,5 @@ neis.TYPE
 ## TODO
 * [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  
 * [ ] web javascript 지원
+* [ ] web request 일반화
 * [ ] [travis-ci 사용](https://github.com/nnnlog/neis/tree/travis)

@@ -20,7 +20,6 @@ neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getDiary(mont
 
 RESULT:
 
-{
 9/4: 모의수능(3년), 학력평가(1,2)
 9/7: 토요휴업일
 9/12: 추석연휴
@@ -32,5 +31,4 @@ RESULT:
 9/26: 영어듣기(3학년)
 9/28: 토요휴업일
 
-}
  */
