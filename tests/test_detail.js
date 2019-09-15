@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 const neis = require("../neis");
-const SchoolType = require("../lib/types/SchoolType");
+const SchoolType = require("../src/types/SchoolType");
 
 neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getSchoolDetail().then(school => {
 	console.log("학교 명: " +

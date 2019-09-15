@@ -32,7 +32,7 @@ const search = async (school, month, refresh = false) => {
 	return new Promise(async (resolve, reject) => {
 		if (result[school.code] !== undefined && result[school.code][year] !== undefined) {
 			if (!refresh && result[school.code][month] !== undefined) {
-				resolve(JSON.parse(JSON.stringify(result[school.code][year][month].slice(0))));
+				resolve(JSON.parse(JSON.stringify(result[school.code][year][month])));
 				return;
 			}
 			if (sem === 1) {

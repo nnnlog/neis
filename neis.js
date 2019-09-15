@@ -8,17 +8,17 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const School = require("./lib/class/school/School");
-const SchoolSearched = require("./lib/class/school/SchoolSearched");
-const SchoolDetail = require("./lib/class/school/SchoolDetail");
+const School = require("./src/class/school/School");
+const SchoolSearched = require("./src/class/school/SchoolSearched");
+const SchoolDetail = require("./src/class/school/SchoolDetail");
 
-const SchoolSearch = require("./lib/class/SchoolSearch");
+const SchoolSearch = require("./src/class/SchoolSearch");
 
-const Meal = require("./lib/class/meal/Meal");
+const Meal = require("./src/class/meal/Meal");
 
-const list = require("./lib/types/EduURILists");
-const region = require("./lib/types/RegionLists");
-const scType = require("./lib/types/SchoolType");
+const list = require("./src/types/EduURILists");
+const region = require("./src/types/RegionLists");
+const scType = require("./src/types/SchoolType");
 
 class neis {
 	
