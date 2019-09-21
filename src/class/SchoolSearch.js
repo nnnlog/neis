@@ -9,9 +9,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 const list = require("../types/EduURILists");
-const EduSession = require("../EduSession");
+const request = require("../request/Request");
 const SchoolSearched = require("./school/SchoolSearched");
-const axios = require("axios");
 
 let result = {ALL: {}};
 
@@ -52,16 +51,8 @@ const fetchData = async (searchString, code) => {
 	};
 	
 	let search = async (code, async = false) => {
-		let response = await axios({
-			url: "https://stu." + list[code] + "/spr_ccm_cm01_100.ws",
-			headers: {
-				'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36',
-				'Cookie': 'JSESSIONID=' + await EduSession(code).getCookie()
-			},
-			data: {
-				kraOrgNm: searchString
-			}
-		});
+		let response = await request("spr_ccm_cm01_100.ws", code, {kraOrgNm: searchString});
+		
 		if (async) {
 			++complete;
 		}

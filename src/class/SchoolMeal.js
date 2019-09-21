@@ -9,9 +9,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 const list = require("../types/EduURILists");
-const axios = require("axios");
 const School = require("../class/school/School");
-const EduSession = require("../EduSession");
+const request = require("../request/Request");
 const Meal = require("./meal/Meal");
 
 const result = {};
@@ -46,17 +45,11 @@ const getMeal = (school, year, month, refresh = false) => {
 			resolve(ret);
 			return;
 		}
-		let response = await axios({
-			url: "https://stu." + list[school.edu] + "/sts_sci_md00_001.ws",
-			headers: {
-				Cookie: 'JSESSIONID=' + await EduSession(school.edu).getCookie()
-			},
-			data: {
-				ay: year,
-				mm: String((month < 10 ? "0" : '') + month),
-				schulCode: school.code,
-				schulCrseScCode: String(school.kind)
-			},
+		let response = await request("sts_sci_md00_001.ws", school.edu, {
+			ay: year,
+			mm: String((month < 10 ? "0" : '') + month),
+			schulCode: school.code,
+			schulCrseScCode: String(school.kind)
 		});
 		
 		if (response.status !== 200) {

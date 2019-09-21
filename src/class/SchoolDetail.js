@@ -9,8 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 const list = require("../types/EduURILists");
-const EduSession = require("../EduSession");
-const axios = require("axios");
+const request = require("../request/Request");
 const neis = require("../../neis");
 
 const result = {};
@@ -26,19 +25,13 @@ const get = (school, refresh = false) => {
 			resolve(neis.createSchoolFromJSON(result[edu][school.code]));
 			return;
 		}
-		let response = await axios({
-			method: "post",
-			url: "https://stu." + list[school.edu] + "/sts_sci_si00_001.ws",
-			headers: {
-				'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
-				'Cookie': 'JSESSIONID=' + await EduSession(school.edu).getCookie()
-			},
-			data: {
-				schulCode: school.code,
-				schulCrseScCode: String(school.kind),
-				schulKndScCode: "0" + school.kind
-			}
+		
+		let response = await request("sts_sci_si00_001.ws", school.edu, {
+			schulCode: school.code,
+			schulCrseScCode: String(school.kind),
+			schulKndScCode: "0" + school.kind
 		});
+		
 		if (response.status !== 200) {
 			reject("정보를 받을 수 없습니다.");
 			return;
