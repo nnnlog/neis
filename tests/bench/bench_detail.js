@@ -20,7 +20,7 @@ const detail_test = async () => {
 	await detail_neis();
 };
 
-detail_test();
+module.exports = detail_test;
 
 /*
 RESULT:

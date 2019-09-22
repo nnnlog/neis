@@ -41,7 +41,7 @@ const diary_test = async () => {
 	await diary_school_kr();
 };
 
-diary_test();
+module.exports = diary_test;
 
 /*
 RESULT:

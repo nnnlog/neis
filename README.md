@@ -275,5 +275,3 @@ neis.TYPE
 ## TODO
 * [ ] 학교 상세정보 조회 - 나이스에서 반환하는 모든 값 제공  
 * [ ] web javascript 지원
-* [ ] web request 일반화
-* [ ] [travis-ci 사용](https://github.com/nnnlog/neis/tree/travis)

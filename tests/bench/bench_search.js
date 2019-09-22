@@ -19,7 +19,7 @@ const search_test = async () => {
 	await search_neis();
 };
 
-search_test();
+module.exports = search_test;
 
 /*
 RESULT:

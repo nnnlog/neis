@@ -41,7 +41,7 @@ const meal_test = async () => {
 	await meal_school_kr();
 };
 
-meal_test();
+module.exports = meal_test;
 
 /*
 RESULT:

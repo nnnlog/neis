@@ -1,0 +1,23 @@
+name: Test
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.10.0'
+      - name: Install dependencies
+        run: npm install
+      - name: Install another modules
+        run: |
+          cd ./tests/
+          npm install node-school-kr
+      - name: Run test
+        run: node ./tests/test.js
+      - name: Run bench
+        run: node ./tests/bench/bench.js
