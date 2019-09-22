@@ -52,7 +52,8 @@ const get = (school, refresh = false) => {
 				lists.orgFaxno,
 				lists.homepage,
 				lists.coeduScNm,
-				lists.fondScNm
+				lists.fondScNm,
+				parseInt(response.resultSVO.gyowonCnList[0].tcnt)
 			);
 			result[edu][school.code] = sc.toJSON();
 			resolve(sc);

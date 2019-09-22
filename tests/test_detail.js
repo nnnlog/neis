@@ -18,6 +18,6 @@ neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getSchoolDeta
 		"\n학교 유형 : " + SchoolType[school.kind] + "\n학교 우편 번호 : " + school.zipCode +
 		"\n학교 전화 번호 : " + school.tellNum + "\n학교 팩스 번호 : " + school.faxNum +
 		"\n학교 홈페이지 주소 : " + school.homepage + "\n학교 남녀 구분 : " + school.coeduScNm +
-		"\n학교 설립 유형 : " + school.fondScNm
+		"\n학교 설립 유형 : " + school.fondScNm + "\n학교 선생님 수 : " + school.teacherCnt
 	)
 });

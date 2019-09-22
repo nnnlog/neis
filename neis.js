@@ -26,7 +26,7 @@ class neis {
 	 * 모든 교육청 코드를 반환합니다. {교육청코드 => 교육청링크, ...}
 	 * @returns {{SEJONG, DAEJEON, BUSAN, JEJU, GYEONGNAM, SEOUL, DAEGU, GYEONGGI, GANGWON, ULSAN, JEONBUK, GYEONGBUK, INCHOEN, CHUNGBUK, GWANGJU, CHUNKNAM, JEONNAM}}
 	 */
-	static get EDU() {
+	static get URI() {
 		return JSON.parse(JSON.stringify(list));
 	}
 	
@@ -80,7 +80,8 @@ class neis {
 			data.faxNum,
 			data.homepage,
 			data.coeduScNm,
-			data.fondScNm
+			data.fondScNm,
+			data.teacherCnt
 		);
 	}
 	
@@ -100,13 +101,14 @@ class neis {
 	 * @param {string}  homepage            학교 홈페이지 주소
 	 * @param {string}  coeduScNm           학교 남녀 유형 (남/여/남여공학)
 	 * @param {string}  fondScNm            학교 설립 유형 (공립/사립)
+	 * @param {string}  teacherCnt          학교 선생님 수
 	 *
 	 * @returns {School|SchoolSearched|SchoolDetail}
 	 */
-	static createSchool(edu_code, code, kind, name = undefined, addr = undefined, fondYmd = undefined, zipCode = undefined, tellNum = undefined, faxNum = undefined, homepage = undefined, coeduScNm = undefined, fondScNm = undefined) {
+	static createSchool(edu_code, code, kind, name = undefined, addr = undefined, fondYmd = undefined, zipCode = undefined, tellNum = undefined, faxNum = undefined, homepage = undefined, coeduScNm = undefined, fondScNm = undefined, teacherCnt = undefined) {
 		if (name !== undefined && addr !== undefined) {
-			if (fondYmd !== undefined && zipCode !== undefined && tellNum !== undefined && faxNum !== undefined && homepage !== undefined && coeduScNm !== undefined && fondScNm !== undefined) {
-				return new SchoolDetail(edu_code, code, kind, name, addr, fondYmd, zipCode, tellNum, faxNum, homepage, coeduScNm, fondScNm);
+			if (fondYmd !== undefined && zipCode !== undefined && tellNum !== undefined && faxNum !== undefined && homepage !== undefined && coeduScNm !== undefined && fondScNm !== undefined && teacherCnt !== undefined) {
+				return new SchoolDetail(edu_code, code, kind, name, addr, fondYmd, zipCode, tellNum, faxNum, homepage, coeduScNm, fondScNm, teacherCnt);
 			}
 			return new SchoolSearched(edu_code, code, kind, name, addr);
 		}
@@ -118,7 +120,6 @@ class neis {
 	 * 학교를 검색합니다.
 	 *
 	 * 검색 : neis.createSearchInstance('string', 'ALL').getList();
-	 * @see SchoolSearch.getList
 	 *
 	 * @param {string}  text                 검색할 문자열
 	 * @param {string}  type                 교육청 코드 (/lib/types/RegionLists.js 참고)

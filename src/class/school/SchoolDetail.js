@@ -20,8 +20,9 @@ class SchoolDetail extends SchoolSearched {
     #homepage;
     #coeduScNm; //남/여/남여공학
     #fondScNm; //공립/사립
+    #teacherCnt; //선생님 수
 
-    constructor(edu, code, kind, name, addr, fondYmd, zipCode, tellNum, faxNum, homepage, coeduScNm, fondScNm) {
+    constructor(edu, code, kind, name, addr, fondYmd, zipCode, tellNum, faxNum, homepage, coeduScNm, fondScNm, teacherCnt) {
         super(edu, code, kind, name, addr);
         this.#fondYmd = fondYmd;
         this.#zipCode = zipCode;
@@ -30,6 +31,7 @@ class SchoolDetail extends SchoolSearched {
         this.#homepage = homepage;
         this.#coeduScNm = coeduScNm;
         this.#fondScNm = fondScNm;
+        this.#teacherCnt = teacherCnt;
     }
 
     toJSON() {
@@ -40,7 +42,8 @@ class SchoolDetail extends SchoolSearched {
             faxNum: this.faxNum,
             homepage: this.homepage,
             coeduScNm: this.coeduScNm,
-            fondScNm: this.fondScNm
+            fondScNm: this.fondScNm,
+            teacherCnt: this.teacherCnt
         });
     }
 
@@ -98,6 +101,14 @@ class SchoolDetail extends SchoolSearched {
 
     set fondScNm(value) {
         this.#fondScNm = value;
+    }
+
+    get teacherCnt() {
+        return this.#teacherCnt;
+    }
+
+    set teacherCnt(value) {
+        this.#teacherCnt = value;
     }
 
 

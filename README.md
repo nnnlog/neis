@@ -94,6 +94,7 @@ let meal = await neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HI
 |  homepage |       학교 홈페이지 주소       |
 | coeduScNm |      성별(남/여/남여공학)      |
 |  fondScNm |     설립 유형 (사립, 공립)     |
+|  teacherCnt |          선생님 수         |
 > [학교 세부정보 조회](#학교-세부정보-조회)에서 반환되는 학교의 정보
 
 
@@ -209,7 +210,7 @@ neis.searchSchool(searchString, edu = 'ALL', refresh = false);
 #### EduLists
 
 ```js
-neis.EDU
+neis.URI
 ```
 
 | 교육청 코드 |   value   |     지역명     |

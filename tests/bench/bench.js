@@ -1,5 +1,5 @@
 const run = async () => {
-	console.log("Starting Bench...");
+	console.log("Starting Bench...\n\n");
 	
 	try {
 		console.log("[Bench] Starting detail bench");
@@ -17,7 +17,7 @@ const run = async () => {
 		
 		console.log("\n\n[Bench] Bench Success");
 	} catch (e) {
-		console.log(`Error: Bench Failed`);
+		console.log(`\n\nError: Bench Failed`);
 	}
 };
 
