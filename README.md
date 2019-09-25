@@ -154,7 +154,7 @@ const neis = require("neis");
 ```
 
 #### 교육청, 지역, 유형
-* [neis.EDU](#edulists) : 교육청 URL
+* [neis.URI](#urilists) : 교육청 URL
 * [neis.REGION](#regionlists) : 교육청 지역명 (코드)
 * [neis.TYPE](#schooltype) : 학교 유형 (유치원, 초등학교, 중학교, 고등학교)
 
@@ -207,7 +207,9 @@ neis.searchSchool(searchString, edu = 'ALL', refresh = false);
 
 ### 타입
 
-#### EduLists
+#### URILists
+
+* 각 교육청에 대한 나이스 서비스 링크를 담고 있습니다.
 
 ```js
 neis.URI
