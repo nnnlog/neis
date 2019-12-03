@@ -23,7 +23,7 @@ class Meal {
 		let date = new Date();
 		let splited = str.split('<br />');
 		date.setHours(0, 0, 0, 0);
-		date.setFullYear(year, month, splited.shift());
+		date.setFullYear(year, month - 1, splited.shift());
 		
 		let mealString = '';
 		let mealList = ['[조식]', '[중식]', '[석식]'];
