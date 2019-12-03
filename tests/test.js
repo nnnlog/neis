@@ -50,16 +50,17 @@ const test = async () => {
 	}).catch(e => success = false);
 	
 	console.log("급식 기능 테스트 중...");
-	await school.getMeal(2019, 8).then(d => {
-		if (d.length !== 31) {
+	await school.getMeal(2019, 12).then(d => {
+		if (d.length !== 32 && d[0] === undefined) {
 			success = false;
-			console.log(`Error: 학교 급식 데이터는 31(일, 8월 기준) 이어야 합니다. Get ${d.length}`);
+			console.log(`Error: 학교 급식 데이터는 31(일, 12월 기준) 이어야 합니다. Get ${d.length - 1}`);
 		}
 		
 		d.forEach((m, i) => {
 			if (!m instanceof Meal) {
 				console.log(`Error: ${i}일의 급식 데이터의 객체가 Meal.js 가 아닙니다.`);
 			}
+			//console.log(`=== ${i} ===`);
 			//console.log(m.breakfast, m.lunch, m.dinner);
 		});
 	}).catch(e => success = false);
