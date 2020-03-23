@@ -10,7 +10,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 process.env.timeZone = "Asia/Seoul";
 
-const neis = require("../neis");
+const neis = require("../src/neis");
 
 const school = neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH);
 school.getMeal(2019, 12).then(d => {

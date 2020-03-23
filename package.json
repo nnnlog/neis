@@ -23,20 +23,20 @@
     "email": "sorisem4106@naver.com",
     "url": "https://github.com/nnnlog"
   },
-  "main": "neis.js",
+  "main": "src/neis.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nnnlog/neis.git"
   },
   "scripts": {
-    "test": "node tests/test_meal.js"
+    "test": "node tests/test.js"
   },
   "dependencies": {
     "axios": "^0.19.0"
   },
   "directories": {
     "lib": "src",
-    "example": "tests"
+    "test": "tests"
   },
   "engines": {
     "node": ">=12.0"

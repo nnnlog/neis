@@ -1,4 +1,4 @@
-const neis = require("../neis");
+const neis = require("../src/neis");
 const school = neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH);
 
 const sc_detail = require("../src/class/school/SchoolDetail");

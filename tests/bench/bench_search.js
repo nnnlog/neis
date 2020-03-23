@@ -1,7 +1,7 @@
 //search
 const test_cnt = 10;
 
-const neis = require("../../neis");
+const neis = require("../../src/neis");
 
 const search_neis = async () => {
 	let startTime = Date.now();

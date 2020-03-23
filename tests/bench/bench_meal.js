@@ -1,7 +1,7 @@
 //Meal
 const test_cnt = 10;
 
-const neis = require("../../neis"),
+const neis = require("../../src/neis"),
 	school_neis = neis.createSchool(neis.REGION.BUSAN, "C100000394", neis.TYPE.HIGH);
 
 const node_school_kr = require("node-school-kr"), school_kr = new node_school_kr();
