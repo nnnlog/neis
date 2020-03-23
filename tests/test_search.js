@@ -18,5 +18,4 @@ neis.searchSchool('동래').then(d => {
 			"\n학교 유형 : " + neis.TYPE[school.kind] + "\n\n"
 		);
 	});
-	
 });

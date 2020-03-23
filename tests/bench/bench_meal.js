@@ -11,7 +11,6 @@ const meal_neis = async () => {
 	let startTime = Date.now();
 	for (let i = 1; i <= test_cnt; i++) {
 		await school_neis.getMeal(2019, 8, true);
-		//console.log(`neis module | bench Complete ${i}/${test_cnt}`);
 	}
 	let endTime = Date.now();
 	
@@ -22,7 +21,6 @@ const meal_school_kr = async () => {
 	let startTime = Date.now();
 	for (let i = 1; i <= test_cnt; i++) {
 		await school_kr.getMeal(2019, 8);
-		//console.log(`neis module | bench Complete ${i}/${test_cnt}`);
 	}
 	let endTime = Date.now();
 	

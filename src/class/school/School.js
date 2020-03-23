@@ -9,11 +9,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 const list = require("../../types/EduURILists");
-//const SchoolInfo = require("../SchoolInfo");
 let SchoolInfo, SchoolMeal, SchoolDiary;
 
 class School {
-	
+
 	/**
 	 * load module
 	 * @internal
@@ -23,11 +22,11 @@ class School {
 		SchoolMeal = require("../SchoolMeal");
 		SchoolDiary = require("../SchoolDiarySearch");
 	}
-	
+
 	#edu;
 	#kind;
 	#code;
-	
+
 	constructor(edu, code, kind) {
 		kind = parseInt(kind);
 		if (list[edu] === undefined) {
@@ -37,7 +36,7 @@ class School {
 		this.#code = code;
 		this.#kind = kind;
 	}
-	
+
 	toJSON() {
 		return {
 			edu: this.edu,
@@ -45,8 +44,8 @@ class School {
 			kind: this.kind
 		};
 	}
-	
-	
+
+
 	/**
 	 * 학교의 세부 정보 조회 결과를 반환합니다.
 	 *
@@ -57,7 +56,7 @@ class School {
 	getSchoolDetail(refresh = false) {
 		return SchoolInfo(this, refresh);
 	}
-	
+
 	/**
 	 * 월간 급식을 조회합니다.
 	 *
@@ -70,7 +69,7 @@ class School {
 	getMeal(year, month, refresh = false) {
 		return SchoolMeal(this, year, month, refresh);
 	}
-	
+
 	/**
 	 * 학교의 학사 일정을 가져옵니다.
 	 *
@@ -82,31 +81,31 @@ class School {
 	getDiary(month, refresh = false) {
 		return SchoolDiary(this, month, refresh);
 	}
-	
+
 	get edu() {
 		return this.#edu;
 	}
-	
+
 	set edu(value) {
 		this.#edu = value;
 	}
-	
+
 	get code() {
 		return this.#code;
 	}
-	
+
 	set code(value) {
 		this.#code = value;
 	}
-	
+
 	get kind() {
 		return this.#kind;
 	}
-	
+
 	set kind(value) {
 		this.#kind = value;
 	}
-	
+
 }
 
 module.exports = School;

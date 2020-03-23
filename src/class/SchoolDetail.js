@@ -19,41 +19,41 @@ for (let edu in list) {
 }
 
 const get = (school, refresh = false) => {
-	let edu = school.edu;
 	return new Promise(async (resolve, reject) => {
+		let edu = school.edu;
 		if (!refresh && result[edu][school.code]) {
 			resolve(neis.createSchoolFromJSON(result[edu][school.code]));
 			return;
 		}
-		
+
 		let response = await request("sts_sci_si00_001.ws", school.edu, {
 			schulCode: school.code,
 			schulCrseScCode: String(school.kind),
 			schulKndScCode: "0" + school.kind
 		});
-		
+
 		if (response.status !== 200) {
 			reject("정보를 받을 수 없습니다.");
 			return;
 		}
-		
+
 		response = response.data;
 		if (response !== null && response.resultSVO !== undefined && response.resultSVO.swcSciSi00M00List !== undefined) {
 			let lists = response.resultSVO.swcSciSi00M00List[0];
 			let sc = neis.createSchool(
-				school.edu,
-				school.code,
-				response.resultSVO.schulCrseScCode,
-				lists.kraOrgNm,
-				lists.zipAdres,
-				lists.fondYmd,
-				lists.zipCode,
-				lists.orgTelno,
-				lists.orgFaxno,
-				lists.homepage,
-				lists.coeduScNm,
-				lists.fondScNm,
-				parseInt(response.resultSVO.gyowonCnList[0].tcnt)
+					school.edu,
+					school.code,
+					response.resultSVO.schulCrseScCode,
+					lists.kraOrgNm,
+					lists.zipAdres,
+					lists.fondYmd,
+					lists.zipCode,
+					lists.orgTelno,
+					lists.orgFaxno,
+					lists.homepage,
+					lists.coeduScNm,
+					lists.fondScNm,
+					parseInt(response.resultSVO.gyowonCnList[0].tcnt)
 			);
 			result[edu][school.code] = sc.toJSON();
 			resolve(sc);
@@ -61,8 +61,6 @@ const get = (school, refresh = false) => {
 		}
 		reject("손상된 데이터입니다.");
 	});
-	
-	
 };
 
 module.exports = get;

@@ -29,7 +29,7 @@ const search = async (name, edu = 'ALL', refresh = false) => {
 		if (result[edu][name] !== undefined && !refresh) {
 			resolve(result[edu][name].slice(0));
 		}
-		
+
 		resolve((await fetchData(name, edu)).slice(0));
 	});
 };
@@ -40,7 +40,7 @@ const search = async (name, edu = 'ALL', refresh = false) => {
  */
 const fetchData = async (searchString, code) => {
 	let complete = [], res = [];
-	
+
 	let search = async (code) => {
 		let response = await request("spr_ccm_cm01_100.ws", code, {kraOrgNm: searchString});
 
@@ -57,7 +57,7 @@ const fetchData = async (searchString, code) => {
 			}
 		}
 	};
-	
+
 	if (code === 'ALL') {
 		for (let code in list) {
 			complete.push(search(code, true));

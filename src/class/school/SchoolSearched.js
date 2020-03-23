@@ -11,39 +11,39 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 const School = require("./School");
 
 class SchoolSearched extends School {
-	
+
 	#name;
 	#addr;
-	
+
 	constructor(edu, code, kind, name, addr) {
 		super(edu, code, kind);
 		this.#name = name;
 		this.#addr = addr;
 	}
-	
+
 	toJSON() {
 		return Object.assign(super.toJSON(), {
 			name: this.name,
 			addr: this.addr
 		});
 	}
-	
+
 	get name() {
 		return this.#name;
 	}
-	
+
 	set name(value) {
 		this.#name = value;
 	}
-	
+
 	get addr() {
 		return this.#addr;
 	}
-	
+
 	set addr(value) {
 		this.#addr = value;
 	}
-	
+
 }
 
 module.exports = SchoolSearched;

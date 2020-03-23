@@ -7,7 +7,6 @@ const search_neis = async () => {
 	let startTime = Date.now();
 	for (let i = 1; i <= test_cnt; i++) {
 		await neis.searchSchool("동래", 'ALL', true);
-		//console.log(`neis module | bench Complete ${i}/${test_cnt}`);
 	}
 	let endTime = Date.now();
 	

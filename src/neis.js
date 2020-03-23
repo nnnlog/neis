@@ -21,7 +21,7 @@ const region = require("./types/RegionLists");
 const scType = require("./types/SchoolType");
 
 class neis {
-	
+
 	/**
 	 * 모든 교육청 코드를 반환합니다. {교육청코드 => 교육청링크, ...}
 	 * @returns {{SEJONG, DAEJEON, BUSAN, JEJU, GYEONGNAM, SEOUL, DAEGU, GYEONGGI, GANGWON, ULSAN, JEONBUK, GYEONGBUK, INCHOEN, CHUNGBUK, GWANGJU, CHUNKNAM, JEONNAM}}
@@ -29,7 +29,7 @@ class neis {
 	static get URI() {
 		return JSON.parse(JSON.stringify(list));
 	}
-	
+
 	/**
 	 * 모든 지역을 반환합니다. {지역명 => 교육청코드}
 	 * 지역명과 교육청코드는 같습니다.
@@ -42,7 +42,7 @@ class neis {
 	static get REGION() {
 		return JSON.parse(JSON.stringify(region));
 	}
-	
+
 	/**
 	 *
 	 * @returns {{HIGH, MIDDLE, ELEMENTARY, KINDERGARTEN}}
@@ -50,7 +50,7 @@ class neis {
 	static get TYPE() {
 		return JSON.parse(JSON.stringify(scType));
 	}
-	
+
 	/**
 	 * 급식 문자열에서 알러지 정보를 제거합니다.
 	 * @param {string} text
@@ -58,7 +58,7 @@ class neis {
 	static removeAllergy(text) {
 		return Meal.removeAllergy(text);
 	}
-	
+
 	/**
 	 * School.toJSON() 의 데이터를 다시 학교 객체로 만듭니다.
 	 *
@@ -67,25 +67,25 @@ class neis {
 	 */
 	static createSchoolFromJSON(data) {
 		return neis.createSchool(
-			data.edu,
-			data.code,
-			data.kind,
-			
-			data.name,
-			data.addr,
-			
-			data.fondYmd,
-			data.zipCode,
-			data.tellNum,
-			data.faxNum,
-			data.homepage,
-			data.coeduScNm,
-			data.fondScNm,
-			data.teacherCnt
+				data.edu,
+				data.code,
+				data.kind,
+
+				data.name,
+				data.addr,
+
+				data.fondYmd,
+				data.zipCode,
+				data.tellNum,
+				data.faxNum,
+				data.homepage,
+				data.coeduScNm,
+				data.fondScNm,
+				data.teacherCnt
 		);
 	}
-	
-	
+
+
 	/**
 	 * 학교를 반환합니다.
 	 *
@@ -114,8 +114,8 @@ class neis {
 		}
 		return new School(edu_code, code, kind);
 	}
-	
-	
+
+
 	/**
 	 * 학교를 검색합니다.
 	 *
@@ -130,7 +130,7 @@ class neis {
 	static searchSchool(text, type = 'ALL', refresh = false) {
 		return SchoolSearch(text, type, refresh);
 	}
-	
+
 }
 
 module.exports = neis;

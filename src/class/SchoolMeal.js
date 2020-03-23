@@ -51,13 +51,13 @@ const getMeal = (school, year, month, refresh = false) => {
 			schulCode: school.code,
 			schulCrseScCode: String(school.kind)
 		});
-		
+
 		if (response.status !== 200) {
 			reject("정보를 받을 수 없습니다.");
 			return;
 		}
 		response = response.data;
-		
+
 		if (response !== null && response.resultSVO !== undefined && response.resultSVO.mthDietList !== undefined) {
 			let lists = response.resultSVO.mthDietList;
 			let date = [];

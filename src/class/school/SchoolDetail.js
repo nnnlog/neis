@@ -13,104 +13,103 @@ const SchoolSearched = require("./SchoolSearched");
 class SchoolDetail extends SchoolSearched {
 
 
-    #fondYmd; //설립일
-    #zipCode;
-    #tellNum;
-    #faxNum;
-    #homepage;
-    #coeduScNm; //남/여/남여공학
-    #fondScNm; //공립/사립
-    #teacherCnt; //선생님 수
+	#fondYmd; //설립일
+	#zipCode;
+	#tellNum;
+	#faxNum;
+	#homepage;
+	#coeduScNm; //남/여/남여공학
+	#fondScNm; //공립/사립
+	#teacherCnt; //선생님 수
 
-    constructor(edu, code, kind, name, addr, fondYmd, zipCode, tellNum, faxNum, homepage, coeduScNm, fondScNm, teacherCnt) {
-        super(edu, code, kind, name, addr);
-        this.#fondYmd = fondYmd;
-        this.#zipCode = zipCode;
-        this.#tellNum = tellNum;
-        this.#faxNum = faxNum;
-        this.#homepage = homepage;
-        this.#coeduScNm = coeduScNm;
-        this.#fondScNm = fondScNm;
-        this.#teacherCnt = teacherCnt;
-    }
+	constructor(edu, code, kind, name, addr, fondYmd, zipCode, tellNum, faxNum, homepage, coeduScNm, fondScNm, teacherCnt) {
+		super(edu, code, kind, name, addr);
+		this.#fondYmd = fondYmd;
+		this.#zipCode = zipCode;
+		this.#tellNum = tellNum;
+		this.#faxNum = faxNum;
+		this.#homepage = homepage;
+		this.#coeduScNm = coeduScNm;
+		this.#fondScNm = fondScNm;
+		this.#teacherCnt = teacherCnt;
+	}
 
-    toJSON() {
-        return Object.assign(super.toJSON(), {
-	        fondYmd: this.fondYmd,
-            zipCode: this.zipCode,
-            tellNum: this.tellNum,
-            faxNum: this.faxNum,
-            homepage: this.homepage,
-            coeduScNm: this.coeduScNm,
-            fondScNm: this.fondScNm,
-            teacherCnt: this.teacherCnt
-        });
-    }
+	toJSON() {
+		return Object.assign(super.toJSON(), {
+			fondYmd: this.fondYmd,
+			zipCode: this.zipCode,
+			tellNum: this.tellNum,
+			faxNum: this.faxNum,
+			homepage: this.homepage,
+			coeduScNm: this.coeduScNm,
+			fondScNm: this.fondScNm,
+			teacherCnt: this.teacherCnt
+		});
+	}
 
-    get fondYmd() {
-        return this.#fondYmd;
-    }
+	get fondYmd() {
+		return this.#fondYmd;
+	}
 
-    set fondYmd(value) {
-        this.#fondYmd = value;
-    }
+	set fondYmd(value) {
+		this.#fondYmd = value;
+	}
 
-    get zipCode() {
-        return this.#zipCode;
-    }
+	get zipCode() {
+		return this.#zipCode;
+	}
 
-    set zipCode(value) {
-        this.#zipCode = value;
-    }
+	set zipCode(value) {
+		this.#zipCode = value;
+	}
 
-    get tellNum() {
-        return this.#tellNum;
-    }
+	get tellNum() {
+		return this.#tellNum;
+	}
 
-    set tellNum(value) {
-        this.#tellNum = value;
-    }
+	set tellNum(value) {
+		this.#tellNum = value;
+	}
 
-    get faxNum() {
-        return this.#faxNum;
-    }
+	get faxNum() {
+		return this.#faxNum;
+	}
 
-    set faxNum(value) {
-        this.#faxNum = value;
-    }
+	set faxNum(value) {
+		this.#faxNum = value;
+	}
 
-    get homepage() {
-        return this.#homepage;
-    }
+	get homepage() {
+		return this.#homepage;
+	}
 
-    set homepage(value) {
-        this.#homepage = value;
-    }
+	set homepage(value) {
+		this.#homepage = value;
+	}
 
-    get coeduScNm() {
-        return this.#coeduScNm;
-    }
+	get coeduScNm() {
+		return this.#coeduScNm;
+	}
 
-    set coeduScNm(value) {
-        this.#coeduScNm = value;
-    }
+	set coeduScNm(value) {
+		this.#coeduScNm = value;
+	}
 
-    get fondScNm() {
-        return this.#fondScNm;
-    }
+	get fondScNm() {
+		return this.#fondScNm;
+	}
 
-    set fondScNm(value) {
-        this.#fondScNm = value;
-    }
+	set fondScNm(value) {
+		this.#fondScNm = value;
+	}
 
-    get teacherCnt() {
-        return this.#teacherCnt;
-    }
+	get teacherCnt() {
+		return this.#teacherCnt;
+	}
 
-    set teacherCnt(value) {
-        this.#teacherCnt = value;
-    }
-
+	set teacherCnt(value) {
+		this.#teacherCnt = value;
+	}
 
 }
 

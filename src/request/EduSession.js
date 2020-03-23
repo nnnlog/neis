@@ -19,10 +19,10 @@ let lists = {};
  * @desc 나이스 요청용 인증 셰션
  */
 class EduSession {
-	
+
 	#edu;
 	#cookie;
-	
+
 	/**
 	 *
 	 * @param code
@@ -34,7 +34,7 @@ class EduSession {
 		this.#edu = code;
 		this.#cookie = "";
 	}
-	
+
 	/**
 	 *
 	 * @returns {Promise<string>}
@@ -45,7 +45,7 @@ class EduSession {
 		}
 		return this.#cookie;
 	}
-	
+
 	/**
 	 *
 	 * @returns {Promise<string>}
@@ -62,18 +62,16 @@ class EduSession {
 			this.time = Date.now() - 1;
 			throw new Error("전달된 코드가 없습니다.");
 		}
-		
+
 		cookie_ = response.headers['set-cookie'][1].substr("JSESSIONID=".length).replace('Path=/', '');
 		if (cookie_ === '') {
 			this.time = Date.now() - 1;
 			throw new Error("전달된 코드가 없습니다.");
 		}
-		
+
 		this.time = Date.now() + 1000 * 60 * 30;
 		return this.#cookie = cookie_;
 	}
-	
-	
 }
 
 /**
@@ -85,6 +83,6 @@ module.exports = code => {
 	if (lists[code] instanceof EduSession) {
 		return lists[code];
 	}
-	
+
 	return lists[code] = new EduSession(code);
 };

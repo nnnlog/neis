@@ -60,8 +60,6 @@ const test = async () => {
 			if (!m instanceof Meal) {
 				console.log(`Error: ${i}일의 급식 데이터의 객체가 Meal.js 가 아닙니다.`);
 			}
-			//console.log(`=== ${i} ===`);
-			//console.log(m.breakfast, m.lunch, m.dinner);
 		});
 	}).catch(e => success = false);
 	

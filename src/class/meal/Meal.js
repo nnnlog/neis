@@ -9,7 +9,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 class Meal {
-	
+
 	/**
 	 * @param {string} str
 	 * @param {int} year
@@ -24,10 +24,10 @@ class Meal {
 		let splited = str.split('<br />');
 		date.setHours(0, 0, 0, 0);
 		date.setFullYear(year, month - 1, splited.shift());
-		
+
 		let mealString = '';
 		let mealList = ['[조식]', '[중식]', '[석식]'];
-		
+
 		let meals = [];
 		meals[mealList[0]] = [];
 		meals[mealList[1]] = [];
@@ -37,7 +37,7 @@ class Meal {
 		} else {
 			return new Meal(date, '', '', '');
 		}
-		
+
 		let currentString = '';
 		while ((currentString = splited.shift()) !== undefined) {
 			if (mealList.includes(currentString)) {
@@ -46,19 +46,19 @@ class Meal {
 			}
 			meals[mealString].push(currentString);
 		}
-		
+
 		return new Meal(date, meals[mealList[0]].join("\n"), meals[mealList[1]].join("\n"), meals[mealList[2]].join("\n"));
 	}
-	
+
 	static removeAllergy(text) {
 		return text.replace(/([1-9]|1[0-9])\./gi, "");
 	}
-	
+
 	#date;
 	#breakfast;
 	#lunch;
 	#dinner;
-	
+
 	/**
 	 *
 	 * @param {Date}    date        날짜
@@ -72,15 +72,15 @@ class Meal {
 		this.#lunch = lunch;
 		this.#dinner = dinner;
 	}
-	
+
 	clone() {
 		return new Meal(this.date, this.breakfast, this.lunch, this.dinner);
 	}
-	
+
 	get date() {
 		return this.#date;
 	}
-	
+
 	setString(mealType, value) {
 		switch (mealType) {
 			case 1:
@@ -93,7 +93,7 @@ class Meal {
 				return undefined;
 		}
 	}
-	
+
 	getString(mealType) {
 		switch (mealType) {
 			case 1:
@@ -106,31 +106,31 @@ class Meal {
 				return undefined;
 		}
 	}
-	
+
 	get breakfast() {
 		return this.#breakfast;
 	}
-	
+
 	set breakfast(value) {
 		this.#breakfast = value;
 	}
-	
+
 	get lunch() {
 		return this.#lunch;
 	}
-	
+
 	set lunch(value) {
 		this.#lunch = value;
 	}
-	
+
 	get dinner() {
 		return this.#dinner;
 	}
-	
+
 	set dinner(value) {
 		this.#dinner = value;
 	}
-	
+
 }
 
 module.exports = Meal;
