@@ -21,7 +21,7 @@ for (let edu in list) {
 /**
  * @param {string}      name                검색할 이름
  * @param {string}      edu                 교육청 이름 (전체 검색의 경우는 `ALL`)
- * @param {boolean}     refresh             true 인 경우 재검색합니다.
+ * @param {boolean}     refresh             true면 재검색합니다.
  * @returns {Promise<SchoolSearched[]>}
  */
 const search = async (name, edu = 'ALL', refresh = false) => {
@@ -39,26 +39,15 @@ const search = async (name, edu = 'ALL', refresh = false) => {
  * @returns {Promise<SchoolSearched[]>}
  */
 const fetchData = async (searchString, code) => {
-	let complete = 0, res = [], comTask = (expectedCount = 1) => {
-		return new Promise(resolve => {
-			let f = setInterval(() => {
-				if (expectedCount <= complete) {
-					resolve();
-					clearInterval(f);
-				}
-			}, 10);
-		})
-	};
+	let complete = [], res = [];
 	
-	let search = async (code, async = false) => {
+	let search = async (code) => {
 		let response = await request("spr_ccm_cm01_100.ws", code, {kraOrgNm: searchString});
-		
-		if (async) {
-			++complete;
-		}
+
 		if (response.status !== 200) {
 			return [];
 		}
+
 		response = response.data;
 		if (response !== null && response.resultSVO !== undefined && response.resultSVO.orgDVOList !== undefined) {
 			let lists = response.resultSVO.orgDVOList;
@@ -66,22 +55,17 @@ const fetchData = async (searchString, code) => {
 				data = data.data;
 				res.push(new SchoolSearched(code, data.orgCode, parseInt(data.schulCrseScCode), data.kraOrgNm, data.zipAdres));
 			}
-			return res;
 		}
-		return [];
 	};
 	
 	if (code === 'ALL') {
-		res = [];
 		for (let code in list) {
-			search(code, true);
+			complete.push(search(code, true));
 		}
-		
-		await comTask(Object.values(list).length);
-		return result[code][searchString] = res;
+
+		return Promise.all(complete).then(() => result[code][searchString] = res);
 	} else {
-		await search(code);
-		return result[code][searchString] = res;
+		return result[code][searchString] = await search(code);
 	}
 };
 

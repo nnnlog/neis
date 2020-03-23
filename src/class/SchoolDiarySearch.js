@@ -8,7 +8,6 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-const list = require("../types/EduURILists");
 const request = require("../request/Request");
 const School = require("./school/School");
 
@@ -47,19 +46,19 @@ const search = async (school, month, refresh = false) => {
 				}
 			}
 		}
-		
+
 		let response = await request("sts_sci_sf00_001.ws", school.edu, {
 			schulCode: school.code,
 			schulCrseScCode: String(school.kind),
 			schulKndScCode: "0" + school.kind,
 			sem: sem
-		});
-		
+		}).catch(e => e);
+
 		if (response.status !== 200) {
 			reject("정보를 받을 수 없습니다.");
 			return;
 		}
-		
+
 		response = response.data;
 		if (response !== null && response.resultSVO !== undefined && response.resultSVO.selectYear !== undefined) {
 			let lists = response.resultSVO.selectYear;
@@ -71,12 +70,12 @@ const search = async (school, month, refresh = false) => {
 						for (let event of events) {
 							let splited = event.split(":");
 							let year = splited[1].substr(0, 4), month = splited[1].substr(4, 2),
-								day = splited[1].substr(6);
-							
+									day = splited[1].substr(6);
+
 							year = parseInt(year);
 							month = parseInt(month);
 							day = parseInt(day);
-							
+
 							if (splited[2] === "" || splited[2] === undefined) {
 								continue;
 							}
@@ -97,10 +96,11 @@ const search = async (school, month, refresh = false) => {
 					}
 				}
 			}
-			resolve(JSON.parse(JSON.stringify(result[school.code][year][month])));
-			return;
+			let ret = result[school.code] && result[school.code][year] && result[school.code][year][month];
+			resolve(ret || {});
+		} else {
+			reject("조회를 실패했습니다.");
 		}
-		reject("조회를 실패했습니다.");
 	});
 };
 
