@@ -74,12 +74,13 @@ class School {
 	 * 학교의 학사 일정을 가져옵니다.
 	 *
 	 * @param {number}  month                  검색할 월
+	 * @param {number}  year                   검색할 학년도 (2021년 2월인 경우, 2020년으로 넣어야 합니다.)
 	 * @param {boolean} refresh
 	 *
 	 * @returns {Promise<SchoolDetail>}
 	 */
-	getDiary(month, refresh = false) {
-		return SchoolDiary(this, month, refresh);
+	getDiary(month, year, refresh = false) {
+		return SchoolDiary(this, month, year, refresh);
 	}
 
 	get edu() {

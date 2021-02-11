@@ -18,15 +18,16 @@ const result = {};
  *
  * @param {School}  school
  * @param {number}  month                  검색할 월
+ * @param {number}  year                   검색할 학년도 (2021년 2월인 경우, 2020년으로 넣어야 합니다.)
  * @param {boolean} refresh
  *
  * @returns {Promise<SchoolDetail>}
  */
-const search = async (school, month, refresh = false) => {
+const search = async (school, month, year, refresh = false) => {
 	if (1 > month || month > 12) {
 		throw new Error("월의 범위는 1-12 입니다.");
 	}
-	let sem = (month < 3 || month > 8) ? 2 : 1, year = (new Date()).getFullYear() + (month < 3 ? 1 : 0);
+	let sem = (month < 3 || month > 8) ? 2 : 1;
 	return new Promise(async (resolve, reject) => {
 		if (result[school.code] !== undefined && result[school.code][year] !== undefined) {
 			if (!refresh && result[school.code][month] !== undefined) {
@@ -96,6 +97,7 @@ const search = async (school, month, refresh = false) => {
 					}
 				}
 			}
+			if (month <= 2) year++;
 			let ret = result[school.code] && result[school.code][year] && result[school.code][year][month];
 			resolve(ret || {});
 		} else {

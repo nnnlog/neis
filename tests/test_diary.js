@@ -10,9 +10,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 const neis = require("../src/neis");
 
-neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getDiary(3).then(list => {
+neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getDiary(2, 2020).then(list => {
 	for (let day of Object.keys(list)) {
-		console.log(`${month}/${day}: ${list[day].join(", ")}`);
+		console.log(`2/${day}: ${list[day].join(", ")}`);
 	}
 });
 
@@ -20,15 +20,27 @@ neis.createSchool(neis.REGION.BUSAN, 'C100000394', neis.TYPE.HIGH).getDiary(3).t
 
 RESULT:
 
-9/4: 모의수능(3년), 학력평가(1,2)
-9/7: 토요휴업일
-9/12: 추석연휴
-9/13: 추석
-9/14: 토요휴업일
-9/21: 토요휴업일
-9/24: 영어듣기(1학년)
-9/25: 영어듣기(2학년)
-9/26: 영어듣기(3학년)
-9/28: 토요휴업일
+2/1: 개학일(1,2년), 겨울방학(3년)/3
+2/2: 개학일(3년)
+2/6: 토요휴업일
+2/10: 졸업식(3년)/3, 종업식(1,2년)/1/2
+2/11: 설연휴, 학년말방학
+2/12: 설연휴, 학년말방학
+2/13: 토요휴업일, 학년말방학
+2/14: 학년말방학
+2/15: 학년말방학
+2/16: 학년말방학
+2/17: 학년말방학
+2/18: 학년말방학
+2/19: 학년말방학
+2/20: 토요휴업일, 학년말방학
+2/21: 학년말방학
+2/22: 학년말방학
+2/23: 학년말방학
+2/24: 학년말방학
+2/25: 학년말방학
+2/26: 학년말방학
+2/27: 토요휴업일, 학년말방학
+2/28: 학년말방학
 
  */

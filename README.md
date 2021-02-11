@@ -141,10 +141,11 @@ School.getSchoolDetail(refresh = false);
 ### 학사 일정 조회
 
 ```js
-School.getDiary(month, refresh = false);
+School.getDiary(month, year, refresh = false);
 ```
 
 > 일정을 가져올 월을 입력해주세요.<br>
+> 2021년 2월 정보를 가져오려면, 해당 학사 일정은 2020학년도에 속하므로, 2020년으로 인자를 전달해야 합니다.<br>
 > [`Promise<Object>`](https://github.com/nnnlog/neis/blob/master/tests/test_diary.js#L23-L32) 가 반환됩니다.
 
 
