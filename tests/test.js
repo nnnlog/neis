@@ -28,7 +28,7 @@ const test = async () => {
 	}).catch(e => success = false);
 	
 	console.log("학사일정 조회 기능 테스트 중...");
-	await school.getDiary(8).then(list => {
+	await school.getDiary(2, 2020).then(list => {
 		console.log(list);
 		for (let day of Object.keys(list)) {
 			if (!Array.isArray(list[day])) {
