@@ -56,6 +56,8 @@ const fetchData = async (searchString, code) => {
 				res.push(new SchoolSearched(code, data.orgCode, parseInt(data.schulCrseScCode), data.kraOrgNm, data.zipAdres));
 			}
 		}
+
+		return res;
 	};
 
 	if (code === 'ALL') {
